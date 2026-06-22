@@ -1,36 +1,18 @@
 # Portfolio — Bharath Kumar Reddy Allampati
 
-Personal portfolio site for a CS undergrad specializing in Information Security. Static, no build step, deployable directly on GitHub Pages.
+A personal portfolio site for a Computer Science undergraduate (VIT, Class of 2026) building toward full stack development with Java, backed by a foundation in information security and cloud (AWS).
 
-## Structure
-```
-.
-├── index.html      # markup
-├── styles.css       # all styling
-├── script.js        # terminal animation, scroll progress, reveal-on-scroll
-├── Photos/           # profile photo
-└── icons/            # favicon / social icons (add your own)
-```
+## What's on it
 
-## Stack
-HTML5, CSS3, vanilla JavaScript. Fonts loaded from Google Fonts (Space Grotesk, IBM Plex Mono, Inter).
+- **About** — background, current focus, core strengths
+- **Skills** — language, database, cloud, and tooling stack, organized by layer
+- **Projects** — Digital Watermarking System, Smart Queue Alert, and Quiz-Me, with the problem each one solved
+- **Certifications** — Oracle OCI Generative AI Professional, Google Cybersecurity Professional Certificate, TATA Cybersecurity Analyst Job Simulation, and a Full Stack Web Development internship
+- **Education** — academic path from Class 10 through current B.Tech
+- **Contact** — email, LinkedIn, GitHub
 
-## Run locally
-No build tools needed. Just open `index.html` in a browser, or serve it:
-```
-python3 -m http.server 8000
-```
+## Why it's built this way
 
-## Deploy (GitHub Pages)
-1. Push this repo to GitHub.
-2. Settings → Pages → Source: `main` branch, `/ (root)`.
-3. Site goes live at `https://<username>.github.io/<repo-name>`.
+The design borrows a terminal / network-trace visual language — a nod to a security and systems background — over a generic template look. Every stat and credential shown is sourced directly from verified certificates and academic records, not self-reported claims.
 
-## To finish before going live
-- [ ] Add real GitHub repo links in the Projects section (`index.html`, search for `href="#"`)
-- [ ] Add LinkedIn and GitHub URLs in the footer contact block
-- [ ] Add a favicon to `/icons`
-- [ ] Confirm name spelling is consistent with resume/LinkedIn/certs
-
-## License
-Personal project — feel free to fork the structure, swap the content.
+Live site: *[add deployed URL once published]*
