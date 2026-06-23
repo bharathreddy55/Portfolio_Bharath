@@ -1,0 +1,42 @@
+:root{
+    --ink:#0B0E11;
+    --surface:#12171D;
+    --surface-2:#1B222A;
+    --line:#262E37;
+    --text:#E9E6E0;
+    --muted:#8C95A0;
+    --copper:#C8814F;
+    --copper-dim:#8a5a37;
+    --teal:#5FA8A0;
+    --good:#7FBF8A;
+    --radius:2px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--copper);color:#0B0E11;}
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--copper);outline-offset:3px;}
+
+  /* ---------- scroll trace indicator ---------- */
+  .trace-rail{
+    position:fixed; left:0; top:0; bottom:0; width:3px; z-index:50;
+    background:var(--surface-2);
+  }
+  .trace-fill{
+    position:absolute; left:0; top:0; width:100%; height:0%;
+    background:linear-gradient(180deg,var(--copper),var(--teal));
+    transition:height .08s linear;
+  }
+  @media(max-width:640px){.trace-rail{display:none;}}
