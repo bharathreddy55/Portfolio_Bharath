@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bharath Kumar Reddy Allampati — Java Full Stack Developer</title>
+<meta name="description" content="Java Full Stack Developer | React · Next.js · PostgreSQL · AWS | B.Tech CS (Information Security) VIT Vellore, graduating 2026.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://github.com/bharathreddy55/Portfolio_Bharath">
+<meta property="og:title" content="Bharath Kumar Reddy Allampati — Java Full Stack Developer">
+<meta property="og:description" content="CS Undergrad at VIT Vellore. Specializing in Java backend, React/Next.js frontend, PostgreSQL databases, and AWS deployments.">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bharath Kumar Reddy Allampati — Java Full Stack Developer">
+<meta name="twitter:description" content="CS Undergrad at VIT Vellore. Specializing in Java backend, React/Next.js frontend, PostgreSQL databases, and AWS deployments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Background particle canvas -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- Noise texture overlay -->
+<div class="noise-overlay"></div>
+
+<!-- Custom cursor -->
+<div class="cur-dot" id="curDot"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader-glass">
+    <div class="loader-brand">B.K.R<span>.</span>A</div>
+    <div class="loader-ring"></div>
+    <div class="loader-bar-wrap"><div class="loader-bar-fill" id="lFill"></div></div>
+    <div class="loader-status mono" id="lStatus">Booting kernel...</div>
+  </div>
+</div>
+
+<!-- Scroll progress bar -->
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-brand">B.K.R<span>.</span>A</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#hero"         class="nl" data-s="hero"><span>01</span>Home</a>
+      <a href="#projects"     class="nl" data-s="projects"><span>02</span>Projects</a>
+      <a href="#skills"       class="nl" data-s="skills"><span>03</span>Skills</a>
+      <a href="#about"        class="nl" data-s="about"><span>04</span>About</a>
+      <a href="#credentials"  class="nl" data-s="credentials"><span>05</span>Credentials</a>
+      <a href="#contact"      class="nl" data-s="contact"><span>06</span>Contact</a>
+    </div>
+    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mob-nav" id="mobNav">
+  <a href="#hero"         class="mn-link">01 · Home</a>
+  <a href="#projects"     class="mn-link">02 · Projects</a>
+  <a href="#skills"       class="mn-link">03 · Skills</a>
+  <a href="#about"        class="mn-link">04 · About</a>
+  <a href="#credentials"  class="mn-link">05 · Credentials</a>
+  <a href="#contact"      class="mn-link">06 · Contact</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero" class="hero">
+  <div class="hero-inner">
+
+    <!-- Hero Left: Swapped to 3D Rotating Globe -->
+    <div class="hero-left">
+      <div class="globe-wrap">
+        <canvas id="globeCanvas"></canvas>
+        <div class="globe-ring r1"></div>
+        <div class="globe-ring r2"></div>
+      </div>
+    </div>
+
+    <!-- Hero Right: Text, Executive Board and Actions -->
+    <div class="hero-right">
+      <div class="availability-pill fade-up">
+        <span class="avail-dot"></span>
+        <span class="mono">Open to full-time &amp; internship roles</span>
+      </div>
+
+      <h1 class="hero-h1 fade-up">
+        <span class="line1">Bharath Kumar</span>
+        <span class="line2" id="roleSpin">Developer.</span>
+      </h1>
+
+      <!-- Executive Overview Board -->
+      <div class="executive-board fade-up" id="execBoard">
+        <div class="eb-header">
+          <span class="eb-bullet"></span>
+          <span class="mono eb-title">SYSTEM STATUS // VERIFIED DOSSIER</span>
+          <span class="mono eb-status">ONLINE</span>
+        </div>
+        <div class="eb-body">
+          <div class="eb-row reveal-row">
+            <span class="eb-label mono">IDENTITY</span>
+            <span class="eb-val">Bharath Kumar Reddy Allampati // Java Full Stack Developer</span>
+          </div>
+          <div class="eb-row reveal-row">
+            <span class="eb-label mono">TECH STACK</span>
+            <span class="eb-val font-accent">
+              <span class="stack-tag">Java</span> · 
+              <span class="stack-tag">Spring Boot</span> · 
+              <span class="stack-tag">React</span> · 
+              <span class="stack-tag">Next.js</span> · 
+              <span class="stack-tag">PostgreSQL</span> · 
+              <span class="stack-tag">AWS</span>
+            </span>
+          </div>
+          <div class="eb-row reveal-row">
+            <span class="eb-label mono">SHIPPED LOGS</span>
+            <div class="eb-val-group">
+              <div class="eb-val-sub"><span class="val-bullet"></span> <strong>Digital Watermarking QR Framework</strong> <span class="badge badge-active mono">active</span></div>
+              <div class="eb-val-sub"><span class="val-bullet"></span> <strong>Smart Queue AWS Rekognition System</strong> <span class="badge badge-deploy mono">deployed</span></div>
+            </div>
+          </div>
+          <div class="eb-row reveal-row">
+            <span class="eb-label mono">METRICS</span>
+            <span class="eb-val">CGPA 8.39 / 10 · 4 Certified Credentials · Graduating 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="hero-p fade-up">
+        CS undergrad at <strong>VIT Vellore</strong>. Building end-to-end apps —
+        <strong>Java</strong> backends, <strong>React/Next.js</strong> frontends,
+        <strong>PostgreSQL</strong> data layers — cloud-deployed on AWS.
+      </p>
+
+      <div class="hero-btns fade-up">
+        <a href="#projects" class="gbtn primary">
+          <span>View Projects</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:bharath02032508@gmail.com" class="gbtn ghost">Email Me</a>
+        <a href="https://github.com/bharathreddy55" target="_blank" rel="noopener" class="gbtn outline">GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scroll-hint">
+    <div class="sh-wheel"></div>
+    <span class="mono">scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════ PROJECTS ═══════════════ -->
+<section id="projects" class="section">
+  <div class="wrap">
+    <div class="sec-label fade-up"><span class="num-tag">02</span>Projects</div>
+    <h2 class="sec-h fade-up">Things I've <span class="grad">built &amp; shipped.</span></h2>
+
+    <div class="proj-grid">
+
+      <div class="proj-glass fade-up" id="pg1">
+        <div class="pg-inner">
+          <div class="pg-top">
+            <div class="pg-num mono">PROJECT // 01</div>
+            <div class="pg-badge">Active</div>
+          </div>
+          <div class="pg-emoji">🔐</div>
+          <h3 class="pg-title">Digital Watermarking System</h3>
+          <p class="pg-desc">LSB &amp; DCT-based embedding framework to hide QR-encoded data inside images — resilient to compression, noise, and format conversion attacks.</p>
+          <div class="pg-stack">
+            <span>Python</span><span>LSB</span><span>DCT</span><span>QR Encoding</span><span>ML</span>
+          </div>
+          <ul class="pg-list">
+            <li>Full pipeline: QR gen → bit encode → DCT → reconstruct</li>
+            <li>Minimal perceptual distortion, high PSNR on extraction</li>
+            <li>Resilient against real-world image attacks</li>
+          </ul>
+          <a href="https://github.com/bharathreddy55" target="_blank" rel="noopener" class="pg-link mono">→ View Repository</a>
+        </div>
+        <div class="pg-shine"></div>
+      </div>
+
+      <div class="proj-glass fade-up" id="pg2">
+        <div class="pg-inner">
+          <div class="pg-top">
+            <div class="pg-num mono">PROJECT // 02</div>
+            <div class="pg-badge">Deployed</div>
+          </div>
+          <div class="pg-emoji">☁</div>
+          <h3 class="pg-title">Smart Queue Alert</h3>
+          <p class="pg-desc">Cloud-based crowd detection via AWS Rekognition &amp; Google Colab — classifies canteen queue as Low / Moderate / Crowded in real time.</p>
+          <div class="pg-stack">
+            <span>AWS Rekognition</span><span>S3</span><span>IAM</span><span>Colab</span>
+          </div>
+          <ul class="pg-list">
+            <li>3-tier crowd threshold classification</li>
+            <li>IAM-secured Rekognition — zero exposed credentials</li>
+            <li>Fully cloud-native, no local server needed</li>
+          </ul>
+          <a href="https://github.com/bharathreddy55" target="_blank" rel="noopener" class="pg-link mono">→ View Repository</a>
+        </div>
+        <div class="pg-shine"></div>
+      </div>
+
+      <div class="proj-glass fade-up" id="pg3">
+        <div class="pg-inner">
+          <div class="pg-top">
+            <div class="pg-num mono">PROJECT // 03</div>
+            <div class="pg-badge">Live</div>
+          </div>
+          <div class="pg-emoji">⚡</div>
+          <h3 class="pg-title">Quiz-Me</h3>
+          <p class="pg-desc">Interactive MCQ platform with real-time scoring, dynamic question rendering, instant feedback and modular architecture for scaling.</p>
+          <div class="pg-stack">
+            <span>JavaScript</span><span>Node.js</span><span>HTML/CSS</span>
+          </div>
+          <ul class="pg-list">
+            <li>Real-time scoring &amp; instant feedback</li>
+            <li>Modular question management — scales cleanly</li>
+            <li>Optimised load path for smooth UX</li>
+          </ul>
+          <a href="https://github.com/bharathreddy55" target="_blank" rel="noopener" class="pg-link mono">→ View Repository</a>
+        </div>
+        <div class="pg-shine"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SKILLS ═══════════════ -->
+<section id="skills" class="section">
+  <div class="wrap">
+    <div class="sec-label fade-up"><span class="num-tag">03</span>Skills</div>
+    <h2 class="sec-h fade-up">Stack, by layer. <span class="grad">Every tool earned.</span></h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-cards">
+
+        <div class="skill-glass fade-up">
+          <div class="sg-head">
+            <div class="sg-icon ic-orange">⚙</div>
+            <div><div class="sg-title">Backend</div><div class="sg-sub mono">Core layer</div></div>
+            <div class="sg-pct mono">95%</div>
+          </div>
+          <div class="sg-bar"><div class="sg-fill" style="--p:95%"></div></div>
+          <div class="sg-chips"><span>Java</span><span>Python</span><span>Spring Boot</span><span>SQL</span></div>
+        </div>
+
+        <div class="skill-glass fade-up">
+          <div class="sg-head">
+            <div class="sg-icon ic-blue">◈</div>
+            <div><div class="sg-title">Frontend</div><div class="sg-sub mono">Interface layer</div></div>
+            <div class="sg-pct mono">88%</div>
+          </div>
+          <div class="sg-bar"><div class="sg-fill" style="--p:88%"></div></div>
+          <div class="sg-chips"><span>React</span><span>Next.js</span><span>JavaScript</span><span>TypeScript</span></div>
+        </div>
+
+        <div class="skill-glass fade-up">
+          <div class="sg-head">
+            <div class="sg-icon ic-purple">◉</div>
+            <div><div class="sg-title">Databases</div><div class="sg-sub mono">Data layer</div></div>
+            <div class="sg-pct mono">85%</div>
+          </div>
+          <div class="sg-bar"><div class="sg-fill" style="--p:85%"></div></div>
+          <div class="sg-chips"><span>PostgreSQL</span><span>MySQL</span><span>Redis</span></div>
+        </div>
+
+        <div class="skill-glass fade-up">
+          <div class="sg-head">
+            <div class="sg-icon ic-cyan">☁</div>
+            <div><div class="sg-title">Cloud / DevOps</div><div class="sg-sub mono">Infrastructure</div></div>
+            <div class="sg-pct mono">78%</div>
+          </div>
+          <div class="sg-bar"><div class="sg-fill" style="--p:78%"></div></div>
+          <div class="sg-chips"><span>AWS EC2</span><span>S3</span><span>Lambda</span><span>IAM</span><span>Docker</span></div>
+        </div>
+
+        <div class="skill-glass fade-up">
+          <div class="sg-head">
+            <div class="sg-icon ic-green">🛡</div>
+            <div><div class="sg-title">Security</div><div class="sg-sub mono">Cross-cutting</div></div>
+            <div class="sg-pct mono">82%</div>
+          </div>
+          <div class="sg-bar"><div class="sg-fill" style="--p:82%"></div></div>
+          <div class="sg-chips"><span>SIEM</span><span>IDS</span><span>Wireshark</span><span>IAM</span></div>
+        </div>
+
+        <div class="skill-glass fade-up">
+          <div class="sg-head">
+            <div class="sg-icon ic-pink">◐</div>
+            <div><div class="sg-title">CS Foundations</div><div class="sg-sub mono">Core knowledge</div></div>
+            <div class="sg-pct mono">92%</div>
+          </div>
+          <div class="sg-bar"><div class="sg-fill" style="--p:92%"></div></div>
+          <div class="sg-chips"><span>DSA</span><span>OOP</span><span>OS</span><span>DBMS</span><span>Networks</span></div>
+        </div>
+
+      </div>
+
+      <div class="sphere-col fade-right">
+        <canvas id="skillSphere"></canvas>
+        <p class="sphere-hint mono">⟳ drag to rotate</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="sec-label fade-up"><span class="num-tag">04</span>About</div>
+    <h2 class="sec-h fade-up">Java backend. React frontend.<br><span class="grad">Postgres underneath.</span></h2>
+
+    <div class="about-grid">
+
+      <div class="about-photo-col fade-left">
+        <div class="glass-photo-card" id="photoTilt">
+          <img src="Photos/bharath-profile.jpg" alt="Bharath Kumar Reddy Allampati">
+          <div class="photo-bar mono">
+            <span>bharath.profile.jpg</span>
+            <span class="live-chip">● verified</span>
+          </div>
+        </div>
+
+        <!-- Personal Info Panel / Stats Dashboard -->
+        <div class="quick-info">
+          <div class="qi-row"><span class="qi-icon">🎓</span><div><div class="qi-l mono">Institute</div><div class="qi-v">VIT Vellore</div></div></div>
+          <div class="qi-row"><span class="qi-icon">📍</span><div><div class="qi-l mono">Location</div><div class="qi-v">Vellore, TN</div></div></div>
+          <div class="qi-row"><span class="qi-icon">🚀</span><div><div class="qi-l mono">Status</div><div class="qi-v open">Open to Roles</div></div></div>
+        </div>
+
+        <div class="dashboard-stats">
+          <div class="dstat">
+            <div class="dstat-n"><span class="cu" data-v="8.39" data-d="2">0</span><sub>/10</sub></div>
+            <div class="dstat-l mono">CGPA</div>
+          </div>
+          <div class="dstat">
+            <div class="dstat-n"><span class="cu" data-v="4" data-d="0">0</span></div>
+            <div class="dstat-l mono">Certs</div>
+          </div>
+          <div class="dstat">
+            <div class="dstat-n"><span class="cu" data-v="3" data-d="0">0</span><sub>+</sub></div>
+            <div class="dstat-l mono">Projects</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text-col fade-right">
+        <p class="about-lead">I'm a final-year CS undergrad specialising in <mark>Information Security</mark> at VIT Vellore, building full-stack applications end to end.</p>
+        <p class="about-p">Backend in <strong>Java</strong>, frontend in <strong>React/Next.js</strong>, data in <strong>PostgreSQL</strong> — working the full path from a feature idea to a deployed, working application.</p>
+        <p class="about-p">A background in security &amp; cloud (<strong>AWS, IAM, network tooling</strong>) means I think about how a system fails before I ship it.</p>
+
+        <div class="tag-sets">
+          <div class="tag-set">
+            <span class="ts-label mono">Core</span>
+            <div class="chips"><span class="chip c1">Java</span><span class="chip c2">React</span><span class="chip c3">PostgreSQL</span><span class="chip c1">AWS</span></div>
+          </div>
+          <div class="tag-set">
+            <span class="ts-label mono">Learning</span>
+            <div class="chips"><span class="chip c4">Spring Boot</span><span class="chip c4">Docker</span><span class="chip c4">System Design</span></div>
+          </div>
+        </div>
+
+        <div class="about-socials">
+          <a href="https://www.linkedin.com/in/bharath-kumar-reddy-allampati-930152275/" target="_blank" rel="noopener" class="soc-btn linkedin">LinkedIn ↗</a>
+          <a href="https://github.com/bharathreddy55" target="_blank" rel="noopener" class="soc-btn github">GitHub ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CREDENTIALS (EDUCATION & CERTS) ═══════════════ -->
+<section id="credentials" class="section">
+  <div class="wrap">
+    <div class="sec-label fade-up"><span class="num-tag">05</span>Credentials</div>
+    <h2 class="sec-h fade-up">Education &amp; <span class="grad">Certifications.</span></h2>
+
+    <div class="credentials-split">
+      
+      <!-- Education (Left Column) -->
+      <div class="edu-col fade-left">
+        <h3 class="cred-sub-title mono">🎓 Education Timeline</h3>
+        <div class="edu-timeline">
+          <div class="edu-spine"></div>
+
+          <div class="edu-item">
+            <div class="edu-node active-node"></div>
+            <div class="edu-glass">
+              <div class="edu-current-tag">Current</div>
+              <div class="edu-yr mono">2022 — 2026</div>
+              <h4 class="edu-deg">B.Tech, Computer Science (Information Security)</h4>
+              <div class="edu-inst">Vellore Institute of Technology, Vellore</div>
+              <div class="edu-chips"><span class="ec-chip primary-ec">CGPA: 8.39 / 10</span></div>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-node"></div>
+            <div class="edu-glass">
+              <div class="edu-yr mono">2020 — 2022</div>
+              <h4 class="edu-deg">Class 12, State Board</h4>
+              <div class="edu-inst">Narayana Junior College, Nellore</div>
+              <div class="edu-chips"><span class="ec-chip">92.2%</span></div>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-node"></div>
+            <div class="edu-glass">
+              <div class="edu-yr mono">2019 — 2020</div>
+              <h4 class="edu-deg">Class 10, State Board</h4>
+              <div class="edu-inst">Narayana High School, Nellore</div>
+              <div class="edu-chips"><span class="ec-chip top-ec">99.5%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications (Right Column) -->
+      <div class="cert-col fade-right">
+        <h3 class="cred-sub-title mono">🏆 Certifications</h3>
+        <div class="cert-stack">
+
+          <div class="cert-glass">
+            <div class="cg-stripe oracle-stripe"></div>
+            <div class="cg-badge oracle-badge">O</div>
+            <div class="cg-content">
+              <div class="cg-org mono">Oracle University</div>
+              <h4 class="cg-name">OCI 2025 Certified Generative AI Professional</h4>
+              <div class="cg-meta">Exam 1Z0-1127-25 · Jul 2025 · Valid to Jul 2027</div>
+              <div class="cg-score-row">
+                <div class="cg-bar"><div class="cg-fill" style="--s:96%"></div></div>
+                <span class="mono">96% <small>(pass 68%)</small></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-glass">
+            <div class="cg-stripe google-stripe"></div>
+            <div class="cg-badge google-badge">G</div>
+            <div class="cg-content">
+              <div class="cg-org mono">Google / Coursera</div>
+              <h4 class="cg-name">Google Cybersecurity Professional Certificate</h4>
+              <div class="cg-meta">9 courses · SIEM, IDS, Python, Linux, SQL · Jul 2025</div>
+              <div class="cg-score-row">
+                <div class="cg-bar"><div class="cg-fill" style="--s:100%"></div></div>
+                <span class="mono">9/9 Completed</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-glass">
+            <div class="cg-stripe tata-stripe"></div>
+            <div class="cg-badge tata-badge">T</div>
+            <div class="cg-content">
+              <div class="cg-org mono">TATA / Forage</div>
+              <h4 class="cg-name">Cybersecurity Analyst Job Simulation</h4>
+              <div class="cg-meta">IAM fundamentals, strategy &amp; platform integration · Aug 2025</div>
+              <div class="cg-score-row">
+                <div class="cg-bar"><div class="cg-fill" style="--s:100%"></div></div>
+                <span class="mono">Completed</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-glass">
+            <div class="cg-stripe pantech-stripe"></div>
+            <div class="cg-badge pantech-badge">P</div>
+            <div class="cg-content">
+              <div class="cg-org mono">Pantech Prolabs</div>
+              <h4 class="cg-name">Full Stack Web Development — Internship</h4>
+              <div class="cg-meta">Certificate of Internship · Dec 22, 2024</div>
+              <div class="cg-score-row">
+                <div class="cg-bar"><div class="cg-fill" style="--s:100%"></div></div>
+                <span class="mono">CERT_MY7HRD18</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact" class="section section-contact">
+  <div class="wrap">
+    <div class="contact-glass fade-up">
+      <div class="sec-label"><span class="num-tag">06</span>Contact</div>
+      <h2 class="contact-h">Open to full stack roles.<br><span class="grad">Let's talk.</span></h2>
+      <p class="contact-sub">Actively looking for internships &amp; full-time opportunities. I respond within 24 hours.</p>
+
+      <div class="contact-cards">
+        <a href="mailto:bharath02032508@gmail.com" class="cc-card email-cc">
+          <div class="cc-ico">✉</div>
+          <div class="cc-lbl mono">Email</div>
+          <div class="cc-val">bharath02032508@gmail.com</div>
+          <div class="cc-cta mono">Send message →</div>
+        </a>
+        <a href="tel:+918977984507" class="cc-card phone-cc">
+          <div class="cc-ico">📞</div>
+          <div class="cc-lbl mono">Phone</div>
+          <div class="cc-val">+91-8977984507</div>
+          <div class="cc-cta mono">Call me →</div>
+        </a>
+        <a href="https://www.linkedin.com/in/bharath-kumar-reddy-allampati-930152275/" target="_blank" rel="noopener" class="cc-card li-cc">
+          <div class="cc-ico cc-txt-ico">in</div>
+          <div class="cc-lbl mono">LinkedIn</div>
+          <div class="cc-val">bharath-kumar-reddy-allampati</div>
+          <div class="cc-cta mono">Connect →</div>
+        </a>
+        <a href="https://github.com/bharathreddy55" target="_blank" rel="noopener" class="cc-card gh-cc">
+          <div class="cc-ico cc-txt-ico">GH</div>
+          <div class="cc-lbl mono">GitHub</div>
+          <div class="cc-val">github.com/bharathreddy55</div>
+          <div class="cc-cta mono">View repos →</div>
+        </a>
+      </div>
+
+      <div class="foot-bar">
+        <span>© 2026 Bharath Kumar Reddy Allampati</span>
+        <span class="mono">HTML · CSS · JS · Three.js</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

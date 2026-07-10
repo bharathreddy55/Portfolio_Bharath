@@ -41,8 +41,7 @@
   }
   @media(max-width:640px){.trace-rail{display:none;}}
 
-
-  /* ---------- nav bar  ( ABOUT PROJECTS ...... )---------- */
+  /* ---------- nav ---------- */
   nav{
     position:fixed; top:0; left:0; right:0; z-index:40;
     backdrop-filter:blur(10px);
@@ -58,7 +57,7 @@
   .navlinks .num{color:var(--copper); margin-right:6px;}
   @media(max-width:640px){.navlinks{display:none;}}
 
- /* ---------- hero ( CS Undergraduate )---------- */
+  /* ---------- hero ---------- */
   header.hero{
     min-height:100vh;
     display:flex; flex-direction:column; justify-content:center;
@@ -133,7 +132,7 @@
   .status-item .v{font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:600; margin-top:4px;}
   .status-item .v .unit{font-size:13px; color:var(--muted); font-weight:400;}
 
- /* ---------- section shell ---------- */
+  /* ---------- section shell ---------- */
   section{padding:110px 0;}
   @media(max-width:640px){section{padding:70px 0;}}
   .eyebrow{
