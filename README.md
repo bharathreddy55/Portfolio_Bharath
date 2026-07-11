@@ -15,4 +15,4 @@ A personal portfolio site for a Computer Science undergraduate (VIT, Class of 20
 
 The design borrows a terminal / network-trace visual language — a nod to a security and systems background — over a generic template look. Every stat and credential shown is sourced directly from verified certificates and academic records, not self-reported claims.
 
-Live site: *[add deployed URL once published]*
+Live site: *https://bharath-reddy-mu.vercel.app/*
