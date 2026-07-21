@@ -187,7 +187,7 @@ story.append(Spacer(1, 5))
 add_heading("EDUCATION")
 
 edu1_left = Paragraph("• <b>Vellore Institute of Technology</b><br/>B. Tech in Computer Science (Specialization: Information Security), <b>8.39/10 CGPA</b>", body_style)
-edu1_right = Paragraph("2022 – 2026<br/>Vellore, Tamil Nadu", ParagraphStyle('RightText', parent=body_style, fontSize=8.5, leading=11.5, alignment=2))
+edu1_right = Paragraph("2022 – June 2026<br/>Vellore, Tamil Nadu", ParagraphStyle('RightText', parent=body_style, fontSize=8.5, leading=11.5, alignment=2))
 
 edu2_left = Paragraph("• <b>Narayana Junior College</b><br/>Class 12(State Board), <b>92.2%</b> Higher Secondary", body_style)
 edu2_right = Paragraph("2020 – 2022<br/>Nellore, Andhra Pradesh", ParagraphStyle('RightText', parent=body_style, fontSize=8.5, leading=11.5, alignment=2))
