@@ -433,13 +433,34 @@ $$('a[href^="#"]').forEach(a => {
   scene.add(group);
 
   const skills = ['Java','React','Next.js','PostgreSQL','AWS','Python','Spring','Docker','Git','SIEM','IAM','MySQL','Lambda','S3','DSA','OOP','OS','Networks'];
-  const palette = [0xc5a880, 0xdfba89, 0xa88f6c, 0xdfc5a3, 0xffffff, 0x828892];
+  const palette = ['#c5a880', '#dfba89', '#7da9d9', '#8dbd96', '#ffffff', '#b8956c'];
+
+  function createTextSprite(text, colorHex) {
+    const fontCanvas = document.createElement('canvas');
+    fontCanvas.width = 256;
+    fontCanvas.height = 64;
+    const ctx = fontCanvas.getContext('2d');
+    ctx.font = 'Bold 24px "Outfit", "Sora", sans-serif';
+    ctx.fillStyle = colorHex || '#dfba89';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.shadowColor = colorHex || '#dfba89';
+    ctx.shadowBlur = 8;
+    ctx.fillText(text, 128, 32);
+
+    const texture = new THREE.CanvasTexture(fontCanvas);
+    const spriteMat = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.9 });
+    const sprite = new THREE.Sprite(spriteMat);
+    sprite.scale.set(0.65, 0.16, 1);
+    return sprite;
+  }
 
   skills.forEach((s, i) => {
     const phi   = Math.acos(-1 + (2 * i) / skills.length);
     const theta = Math.sqrt(skills.length * Math.PI) * phi;
-    const col   = palette[i % palette.length];
-    const r     = 1.0 + (Math.random() * 0.10);
+    const colHex = palette[i % palette.length];
+    const col   = new THREE.Color(colHex);
+    const r     = 1.0 + (Math.random() * 0.08);
 
     const geo  = new THREE.SphereGeometry(0.038 + Math.random() * 0.012, 8, 8);
     const mat  = new THREE.MeshBasicMaterial({ color: col });
@@ -447,14 +468,19 @@ $$('a[href^="#"]').forEach(a => {
     mesh.position.setFromSphericalCoords(r, phi, theta);
     group.add(mesh);
 
+    // Text Sprite Label
+    const sprite = createTextSprite(s, colHex);
+    sprite.position.setFromSphericalCoords(r * 1.22, phi, theta);
+    group.add(sprite);
+
     // Connector line from center
     const pts = [new THREE.Vector3(0,0,0), mesh.position.clone()];
-    const lm  = new THREE.LineBasicMaterial({ color: col, transparent: true, opacity: 0.05 });
+    const lm  = new THREE.LineBasicMaterial({ color: col, transparent: true, opacity: 0.08 });
     group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lm));
   });
 
-  // Central core (gold)
-  const coreGeo = new THREE.SphereGeometry(0.16, 20, 20);
+  // Central core (gold aura)
+  const coreGeo = new THREE.SphereGeometry(0.18, 20, 20);
   const coreMat = new THREE.MeshBasicMaterial({ color: 0xdfba89, transparent: true, opacity: 0.6 });
   group.add(new THREE.Mesh(coreGeo, coreMat));
 
@@ -463,7 +489,7 @@ $$('a[href^="#"]').forEach(a => {
   const iwMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.04 });
   group.add(new THREE.Mesh(iwGeo, iwMat));
 
-  // Drag interaction
+  // Drag interaction with momentum inertia
   let drag = false, px = 0, py = 0, velX = 0, velY = 0;
   canvas.addEventListener('mousedown',  e => { drag=true; px=e.clientX; py=e.clientY; });
   window.addEventListener('mouseup',    () => { drag=false; });
@@ -471,8 +497,8 @@ $$('a[href^="#"]').forEach(a => {
     if (!drag) return;
     velX = e.clientX - px; velY = e.clientY - py;
     px = e.clientX; py = e.clientY;
-    group.rotation.y += velX * 0.010;
-    group.rotation.x += velY * 0.010;
+    group.rotation.y += velX * 0.008;
+    group.rotation.x += velY * 0.008;
   });
   canvas.addEventListener('touchstart', e => { drag=true; px=e.touches[0].clientX; py=e.touches[0].clientY; });
   canvas.addEventListener('touchend',   () => { drag=false; });
@@ -480,8 +506,8 @@ $$('a[href^="#"]').forEach(a => {
     if (!drag) return;
     velX = e.touches[0].clientX - px; velY = e.touches[0].clientY - py;
     px = e.touches[0].clientX; py = e.touches[0].clientY;
-    group.rotation.y += velX * 0.012;
-    group.rotation.x += velY * 0.012;
+    group.rotation.y += velX * 0.010;
+    group.rotation.x += velY * 0.010;
   });
 
   let sphereVisible = true;
@@ -494,13 +520,17 @@ $$('a[href^="#"]').forEach(a => {
     sphereObserver.observe(canvas);
   }
 
+  let tStep = 0;
   (function animate() {
     requestAnimationFrame(animate);
     if (!sphereVisible) return;
+    tStep += 0.025;
+    coreMat.opacity = 0.5 + Math.sin(tStep) * 0.15;
     if (!drag) {
-      group.rotation.y += 0.0045;
-      group.rotation.x += 0.0008;
-      velX *= 0.94; velY *= 0.94;
+      group.rotation.y += velX * 0.006 + 0.0035;
+      group.rotation.x += velY * 0.006 + 0.0006;
+      velX *= 0.94;
+      velY *= 0.94;
     }
     renderer.render(scene, camera);
   })();

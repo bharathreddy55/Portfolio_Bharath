@@ -197,9 +197,15 @@
   }
   .field-value{padding:16px 18px; display:flex; gap:8px; flex-wrap:wrap;}
   .chip{
-    font-size:13px; padding:5px 11px; border-radius:var(--radius);
+    font-size:12.5px; padding:6px 12px; border-radius:var(--radius);
     background:var(--surface-2); color:var(--text); border:1px solid var(--line);
+    display:inline-flex; align-items:center; gap:7px; transition:all 0.25s ease;
   }
+  .chip:hover{
+    border-color:var(--copper); background:rgba(197, 168, 128, 0.08);
+    transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  }
+  .chip svg{width:15px; height:15px; flex-shrink:0;}
   @media(max-width:640px){
     .field-row{grid-template-columns:1fr;}
     .field-label{border-right:none; border-bottom:1px solid var(--line); padding-bottom:8px;}
