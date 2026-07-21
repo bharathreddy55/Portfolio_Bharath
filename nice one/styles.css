@@ -330,11 +330,11 @@ nav.solid .nav-inner {
 .hero-p strong { color: var(--text); font-weight: 500; }
 
 /* Buttons */
-.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 15px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 15px; position: relative; z-index: 10; }
 .gbtn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   padding: 12px 24px; border-radius: var(--r); font-size: 13.5px; font-weight: 600;
-  transition: var(--transition); position: relative;
+  transition: var(--transition); position: relative; z-index: 10; cursor: pointer;
 }
 .gbtn.primary {
   background: var(--copper); color: var(--ink);
