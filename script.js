@@ -135,6 +135,12 @@ if (skillsCanvas && physicsDetailsPanel) {
     { id: 15, label: 'Wireshark', radius: 28, x: 340, y: 40, category: 'Network Security', color: '#5fa8a0', desc: 'Packet trace analyzer. Used to capture live ethernet frames, verify secure socket layers (SSL), and inspect data transmission protocols.', flow: 'Analyzes packet streams; flags networking handshakes.', selected: false }
   ];
 
+  // Initialize node velocities to prevent NaN operations on undefined values
+  nodes.forEach(n => {
+    n.vx = 0;
+    n.vy = 0;
+  });
+
   const links = [
     { source: 0, target: 1 }, // Java -> SQL
     { source: 0, target: 5 }, // Java -> Spring Boot
