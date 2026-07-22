@@ -90,53 +90,132 @@
     <h2 class="sec-title">Technical Expertise</h2>
     <p class="sec-desc">A comprehensive, layered breakdown of technologies, frameworks, databases, and core computer science fundamentals.</p>
 
-    <!-- Interactive Physics Skills Graph -->
-    <div class="skills-physics-container reveal">
-      <!-- Left side: Physics Canvas -->
-      <div class="canvas-wrapper">
-        <div class="stack-instruction mono">Drag or hover nodes to inspect backend &amp; frontend links:</div>
-        <canvas id="skillsCanvas" width="640" height="420"></canvas>
-      </div>
+    <div class="skills-card-grid reveal">
       
-      <!-- Right side: Detail Panel -->
-      <div class="physics-details-container">
-        <div class="physics-details-panel" id="physicsDetailsPanel">
-          <!-- Dynamic details content injected by script.js -->
+      <!-- Card 1: Backend & Core Languages -->
+      <div class="skill-module-card" style="--card-color: var(--copper);">
+        <div class="sm-head">
+          <div class="sm-icon">☕</div>
+          <div class="sm-meta">
+            <div class="sm-title">Backend &amp; Core Languages</div>
+            <div class="sm-sub">Server-side Architecture</div>
+          </div>
+          <div class="sm-pct">95%</div>
+        </div>
+        <div class="sm-bar"><div class="sm-fill" data-pct="95"></div></div>
+        <div class="sm-chips">
+          <span class="sm-chip main">Java</span>
+          <span class="sm-chip main">Spring Boot</span>
+          <span class="sm-chip">Spring Framework</span>
+          <span class="sm-chip">Node.js</span>
+          <span class="sm-chip">Express.js</span>
+          <span class="sm-chip">Python</span>
+          <span class="sm-chip">C</span>
+          <span class="sm-chip">SQL</span>
         </div>
       </div>
-    </div>
 
-    <!-- Supporting Foundations & Tools Grid -->
-    <div class="supporting-skills-grid reveal">
-      <!-- Card 1: CS Foundations -->
-      <div class="support-card">
-        <div class="sc-head">
-          <span class="sc-icon">📚</span>
-          <h3 class="sc-title">Computer Science Foundations</h3>
+      <!-- Card 2: Frontend & UI Engineering -->
+      <div class="skill-module-card" style="--card-color: var(--teal);">
+        <div class="sm-head">
+          <div class="sm-icon">💻</div>
+          <div class="sm-meta">
+            <div class="sm-title">Frontend &amp; UI Engineering</div>
+            <div class="sm-sub">Client Interfaces &amp; Web Apps</div>
+          </div>
+          <div class="sm-pct">88%</div>
         </div>
-        <div class="sc-chips">
-          <span>Data Structures &amp; Algorithms</span>
-          <span>OOP Principles</span>
-          <span>Operating Systems</span>
-          <span>DBMS Architecture</span>
-          <span>Computer Networks</span>
-        </div>
-      </div>
-      
-      <!-- Card 2: Developer Tooling & Workflow -->
-      <div class="support-card">
-        <div class="sc-head">
-          <span class="sc-icon">🛠️</span>
-          <h3 class="sc-title">Developer Tooling &amp; Workflow</h3>
-        </div>
-        <div class="sc-chips">
-          <span>Git / GitHub</span>
-          <span>Postman API Testing</span>
-          <span>VS Code &amp; IntelliJ</span>
-          <span>Google Gemini API</span>
-          <span>Wireshark</span>
+        <div class="sm-bar"><div class="sm-fill" data-pct="88"></div></div>
+        <div class="sm-chips">
+          <span class="sm-chip main">React.js</span>
+          <span class="sm-chip main">Vite</span>
+          <span class="sm-chip">JavaScript (ES6+)</span>
+          <span class="sm-chip">Tailwind CSS</span>
+          <span class="sm-chip">HTML5 / CSS3</span>
+          <span class="sm-chip">Bootstrap</span>
         </div>
       </div>
+
+      <!-- Card 3: Databases & Persistence -->
+      <div class="skill-module-card" style="--card-color: #a78bfa;">
+        <div class="sm-head">
+          <div class="sm-icon">🗄️</div>
+          <div class="sm-meta">
+            <div class="sm-title">Databases &amp; Persistence</div>
+            <div class="sm-sub">Relational &amp; Document Stores</div>
+          </div>
+          <div class="sm-pct">85%</div>
+        </div>
+        <div class="sm-bar"><div class="sm-fill" data-pct="85"></div></div>
+        <div class="sm-chips">
+          <span class="sm-chip main">PostgreSQL</span>
+          <span class="sm-chip main">MySQL</span>
+          <span class="sm-chip">MongoDB Atlas</span>
+          <span class="sm-chip">Firebase</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Cloud & Security -->
+      <div class="skill-module-card" style="--card-color: #5fa8a0;">
+        <div class="sm-head">
+          <div class="sm-icon">☁️</div>
+          <div class="sm-meta">
+            <div class="sm-title">Cloud &amp; Security</div>
+            <div class="sm-sub">AWS Infrastructure &amp; Auditing</div>
+          </div>
+          <div class="sm-pct">82%</div>
+        </div>
+        <div class="sm-bar"><div class="sm-fill" data-pct="82"></div></div>
+        <div class="sm-chips">
+          <span class="sm-chip main">AWS Rekognition</span>
+          <span class="sm-chip">AWS EC2 / S3</span>
+          <span class="sm-chip">AWS Lambda</span>
+          <span class="sm-chip">IAM Security</span>
+          <span class="sm-chip">Wireshark</span>
+          <span class="sm-chip">SIEM / IDS</span>
+        </div>
+      </div>
+
+      <!-- Card 5: CS Foundations -->
+      <div class="skill-module-card" style="--card-color: #f43f5e;">
+        <div class="sm-head">
+          <div class="sm-icon">📚</div>
+          <div class="sm-meta">
+            <div class="sm-title">CS Foundations</div>
+            <div class="sm-sub">Core Computer Science</div>
+          </div>
+          <div class="sm-pct">92%</div>
+        </div>
+        <div class="sm-bar"><div class="sm-fill" data-pct="92"></div></div>
+        <div class="sm-chips">
+          <span class="sm-chip main">Data Structures &amp; Algorithms</span>
+          <span class="sm-chip main">OOP Principles</span>
+          <span class="sm-chip">Operating Systems</span>
+          <span class="sm-chip">DBMS Architecture</span>
+          <span class="sm-chip">Computer Networks</span>
+        </div>
+      </div>
+
+      <!-- Card 6: Developer Tooling -->
+      <div class="skill-module-card" style="--card-color: #10b981;">
+        <div class="sm-head">
+          <div class="sm-icon">🛠️</div>
+          <div class="sm-meta">
+            <div class="sm-title">Developer Tooling</div>
+            <div class="sm-sub">Workflow &amp; API Ecosystem</div>
+          </div>
+          <div class="sm-pct">90%</div>
+        </div>
+        <div class="sm-bar"><div class="sm-fill" data-pct="90"></div></div>
+        <div class="sm-chips">
+          <span class="sm-chip main">Git / GitHub</span>
+          <span class="sm-chip">Google Gemini API</span>
+          <span class="sm-chip">VS Code &amp; IntelliJ</span>
+          <span class="sm-chip">Postman</span>
+          <span class="sm-chip">Wireshark</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
