@@ -3,622 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bharath Kumar Reddy Allampati — Java Full Stack Developer</title>
-<meta name="description" content="Java Full Stack Developer | React · Next.js · PostgreSQL · AWS | B.Tech CS (Information Security) VIT Vellore (Graduated June 2026).">
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://github.com/bharathreddy55/Portfolio_Bharath">
-<meta property="og:title" content="Bharath Kumar Reddy Allampati — Java Full Stack Developer">
-<meta property="og:description" content="CS Graduate from VIT Vellore (Graduated June 2026). Specializing in Java backend, React/Next.js frontend, PostgreSQL databases, and AWS deployments.">
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bharath Kumar Reddy Allampati — Java Full Stack Developer">
-<meta name="twitter:description" content="CS Graduate from VIT Vellore (Graduated June 2026). Specializing in Java backend, React/Next.js frontend, PostgreSQL databases, and AWS deployments.">
+<title>Bharath Kumar Reddy Allampati — Full Stack Java Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- Background particle canvas -->
-<canvas id="bgCanvas"></canvas>
+<div class="trace-rail"><div class="trace-fill" id="traceFill"></div></div>
 
-<!-- Noise texture overlay -->
-<div class="noise-overlay"></div>
-
-<!-- Custom cursor -->
-<div class="cur-dot" id="curDot"></div>
-<div class="cur-ring" id="curRing"></div>
-
-<!-- Loader -->
-<div class="loader" id="loader">
-  <div class="loader-glass">
-    <div class="loader-brand">B.K.R<span>.</span>A</div>
-    <div class="loader-ring"></div>
-    <div class="loader-bar-wrap"><div class="loader-bar-fill" id="lFill"></div></div>
-    <div class="loader-status mono" id="lStatus">Booting kernel...</div>
-  </div>
-</div>
-
-<!-- Scroll progress bar -->
-<div class="scroll-prog" id="scrollProg"></div>
-
-<!-- NAV -->
-<nav id="mainNav">
-  <div class="nav-inner">
-    <div class="nav-brand">B.K.R<span>.</span>A</div>
-    <div class="nav-links" id="navLinks">
-      <a href="#hero"         class="nl" data-s="hero"><span>01</span>Home</a>
-      <a href="#projects"     class="nl" data-s="projects"><span>02</span>Projects</a>
-      <a href="#skills"       class="nl" data-s="skills"><span>03</span>Skills</a>
-      <a href="#about"        class="nl" data-s="about"><span>04</span>About</a>
-      <a href="#credentials"  class="nl" data-s="credentials"><span>05</span>Credentials</a>
-      <a href="#contact"      class="nl" data-s="contact"><span>06</span>Contact</a>
+<nav>
+  <div class="wrap">
+    <div class="brand">BHARATH</div>
+    <div class="navlinks">
+      <a href="#about"><span class="num">01</span>About</a>
+      <a href="#skills"><span class="num">02</span>Skills</a>
+      <a href="#projects"><span class="num">03</span>Projects</a>
+      <a href="#certs"><span class="num">04</span>Certifications</a>
+      <a href="#education"><span class="num">05</span>Education</a>
+      <a href="#contact"><span class="num">06</span>Contact</a>
     </div>
-    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- Mobile nav -->
-<div class="mob-nav" id="mobNav">
-  <a href="#hero"         class="mn-link">01 · Home</a>
-  <a href="#projects"     class="mn-link">02 · Projects</a>
-  <a href="#skills"       class="mn-link">03 · Skills</a>
-  <a href="#about"        class="mn-link">04 · About</a>
-  <a href="#credentials"  class="mn-link">05 · Credentials</a>
-  <a href="#contact"      class="mn-link">06 · Contact</a>
-</div>
-
-<!-- ═══════════════ HERO ═══════════════ -->
-<section id="hero" class="hero">
-  <div class="hero-inner">
-
-    <!-- Hero Left: Swapped to 3D Rotating Globe -->
-    <div class="hero-left">
-      <div class="globe-wrap">
-        <canvas id="globeCanvas"></canvas>
-        <div class="globe-ring r1"></div>
-        <div class="globe-ring r2"></div>
+<header class="hero">
+  <div class="wrap">
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <div class="term-title mono">session — ~/bharath</div>
       </div>
+      <div class="term-body mono" id="termBody"></div>
     </div>
 
-    <!-- Hero Right: Text, Executive Board and Actions -->
-    <div class="hero-right">
-      <div class="availability-pill fade-up">
-        <span class="avail-dot"></span>
-        <span class="mono">Open to full-time &amp; internship roles</span>
-      </div>
+    <h1 class="hero-title">Computer Science graduate building<br><span class="accent">full stack Java applications.</span></h1>
+    <p class="hero-sub">Computer Science graduate from VIT Vellore (Graduated June 2026) specializing in backend-focused software development. I design clean data layers, build robust Java services, and construct scalable web systems—applying an information security foundation to build reliable, resilient code.</p>
 
-      <h1 class="hero-h1 fade-up">
-        <span class="line1">Bharath Kumar</span>
-        <span class="line2" id="roleSpin">Developer.</span>
-      </h1>
-
-      <!-- Executive Overview Board -->
-      <div class="executive-board fade-up" id="execBoard">
-        <div class="eb-header">
-          <span class="eb-bullet"></span>
-          <span class="mono eb-title">SYSTEM STATUS // VERIFIED DOSSIER</span>
-          <span class="mono eb-status">ONLINE</span>
-        </div>
-        <div class="eb-body">
-          <div class="eb-row reveal-row">
-            <span class="eb-label mono">IDENTITY</span>
-            <span class="eb-val">Bharath Kumar Reddy Allampati // Java Full Stack Developer</span>
-          </div>
-          <div class="eb-row reveal-row">
-            <span class="eb-label mono">TECH STACK</span>
-            <span class="eb-val font-accent">
-              <span class="stack-tag">Java</span> · 
-              <span class="stack-tag">Spring Boot</span> · 
-              <span class="stack-tag">React</span> · 
-              <span class="stack-tag">Next.js</span> · 
-              <span class="stack-tag">PostgreSQL</span> · 
-              <span class="stack-tag">AWS</span>
-            </span>
-          </div>
-          <div class="eb-row reveal-row">
-            <span class="eb-label mono">SHIPPED LOGS</span>
-            <div class="eb-val-group">
-              <div class="eb-val-sub"><span class="val-bullet"></span> <strong>AetherCast MERN Podcast Platform</strong> <span class="badge badge-active mono">active</span></div>
-              <div class="eb-val-sub"><span class="val-bullet"></span> <strong>GateLabs AI GATE CS Platform</strong> <span class="badge badge-active mono">active</span></div>
-              <div class="eb-val-sub"><span class="val-bullet"></span> <strong>Digital Watermarking QR Framework</strong> <span class="badge badge-active mono">active</span></div>
-              <div class="eb-val-sub"><span class="val-bullet"></span> <strong>Smart Queue AWS Rekognition System</strong> <span class="badge badge-deploy mono">deployed</span></div>
-            </div>
-          </div>
-          <div class="eb-row reveal-row">
-            <span class="eb-label mono">METRICS</span>
-            <span class="eb-val">CGPA 8.39 / 10 · 4 Certified Credentials · Graduated June 2026</span>
-          </div>
-        </div>
-      </div>
-
-      <p class="hero-p fade-up">
-        CS Graduate from <strong>VIT Vellore (Graduated June 2026)</strong>. Building end-to-end apps —
-        <strong>Java</strong> backends, <strong>React/Next.js</strong> frontends,
-        <strong>PostgreSQL</strong> data layers — cloud-deployed on AWS.
-      </p>
-
-      <div class="hero-btns fade-up">
-        <a href="#projects" class="gbtn primary">
-          <span>View Projects</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="mailto:bharath02032508@gmail.com" class="gbtn ghost">Email Me</a>
-        <a href="Bharath_Kumar_Reddy_Resume.pdf" download="Bharath_Kumar_Reddy_Resume.pdf" class="gbtn outline" style="border-color: var(--copper); color: var(--copper);">Resume ↓</a>
-        <a href="https://github.com/bharathreddy55" target="_blank" rel="noopener" class="gbtn outline">GitHub ↗</a>
-      </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn primary">View projects →</a>
+      <a href="mailto:bharath02032508@gmail.com" class="btn ghost">Email me</a>
+      <a href="Bharath_Kumar_Reddy_Resume.pdf" download="Bharath_Kumar_Reddy_Resume.pdf" class="btn ghost" style="border-color: var(--teal); color: var(--teal);">Resume ↓</a>
     </div>
 
+    <div class="status-bar">
+      <div class="status-item"><div class="k">CGPA</div><div class="v">8.39<span class="unit">/10</span></div></div>
+      <div class="status-item"><div class="k">Certifications</div><div class="v">4<span class="unit">completed credentials</span></div></div>
+      <div class="status-item"><div class="k">Shipped Projects</div><div class="v">5<span class="unit">deployed/working</span></div></div>
+      <div class="status-item"><div class="k">Graduated</div><div class="v">June 2026<span class="unit">VIT Vellore</span></div></div>
+    </div>
   </div>
+</header>
 
-  <div class="scroll-hint">
-    <div class="sh-wheel"></div>
-    <span class="mono">scroll</span>
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">01 · About</div>
+    <h2 class="sec-title">Backend-focused, full stack by capability.</h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="photo-card">
+          <img src="Photos/bharath-profile.jpg" alt="Portrait of Bharath Kumar Reddy Allampati">
+          <div class="photo-cap">
+            <span>bharath.profile.jpg</span>
+            <span class="live">verified</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-body reveal">
+        <p class="lead">I'm a Computer Science graduate from Vellore Institute of Technology (Graduated June 2026), specializing in Information Security and building scalable full stack Java applications.</p>
+        <p>My foundation is in core CS — data structures, OOP, databases, operating systems — and I'm building toward Java-based backend systems: clean data models, structured APIs, and the database layer underneath them.</p>
+        <p>A background in security and cloud (AWS, IAM, network tooling) means I default to thinking about how a system fails before I ship it — not just how it works on the happy path.</p>
+        <div class="focus-tags">
+          <span>Java</span>
+          <span>OOP &amp; Data Structures</span>
+          <span>SQL / Databases</span>
+          <span>Full Stack Development</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════ PROJECTS ═══════════════ -->
-<section id="projects" class="section">
+<section id="skills">
   <div class="wrap">
-    <div class="sec-label fade-up"><span class="num-tag">02</span>Projects</div>
-    <h2 class="sec-h fade-up">Things I've <span class="grad">built &amp; shipped.</span></h2>
+    <div class="eyebrow">02 · Skills &amp; Technologies</div>
+    <h2 class="sec-title">Technical Expertise</h2>
+    <p class="sec-desc">A comprehensive, layered breakdown of technologies, frameworks, databases, and core computer science fundamentals.</p>
 
-    <div class="proj-grid">
-
-      <div class="proj-glass fade-up" id="pg1">
-        <div class="pg-inner">
-          <div class="pg-top">
-            <div class="pg-num mono">PROJECT // 01</div>
-            <div class="pg-badge">Live</div>
+    <!-- Interactive Layered Architecture Diagram -->
+    <div class="skills-architecture reveal">
+      
+      <!-- Left side: Interactive Visual Stack -->
+      <div class="stack-container">
+        <div class="stack-instruction mono">Select a layer to inspect systems:</div>
+        
+        <div class="arch-stack">
+          <!-- Layer 4: Client (Top) -->
+          <div class="arch-layer active" data-layer="client" style="--layer-color: var(--teal);">
+            <div class="layer-depth"></div>
+            <div class="layer-content">
+              <span class="layer-num mono">L4</span>
+              <span class="layer-title">Client &amp; UI Layer</span>
+              <span class="layer-tech mono">React · Vite · CSS</span>
+            </div>
           </div>
-          <div class="pg-emoji">🎙️</div>
-          <h3 class="pg-title">AetherCast Podcast Platform</h3>
-          <p class="pg-desc">Production-ready MERN podcast streaming app featuring Supabase ES256 auth, sticky audio player, live waveform recording booth, and Gemini AI transcript summarizer.</p>
-          <div class="pg-stack">
-            <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Supabase</span><span>Gemini AI</span>
+          
+          <!-- Layer 3: API (Middle-Top) -->
+          <div class="arch-layer" data-layer="api" style="--layer-color: var(--copper);">
+            <div class="layer-depth"></div>
+            <div class="layer-content">
+              <span class="layer-num mono">L3</span>
+              <span class="layer-title">API &amp; Application Logic</span>
+              <span class="layer-tech mono">Java · Spring · Node</span>
+            </div>
           </div>
-          <ul class="pg-list">
-            <li>Asymmetric ES256 JWT auth via Supabase + MongoDB Atlas</li>
-            <li>Gemini 1.5 Flash automated transcript tag &amp; summary generator</li>
-            <li>Socket.io real-time multi-user synchronized listening rooms</li>
-          </ul>
-          <a href="https://github.com/bharathreddy55/AetherCast-MERN" target="_blank" rel="noopener" class="pg-link mono">→ View Repository</a>
+          
+          <!-- Layer 2: Database (Middle-Bottom) -->
+          <div class="arch-layer" data-layer="db" style="--layer-color: #a78bfa;">
+            <div class="layer-depth"></div>
+            <div class="layer-content">
+              <span class="layer-num mono">L2</span>
+              <span class="layer-title">Database &amp; Storage</span>
+              <span class="layer-tech mono">Postgres · Mongo · SQL</span>
+            </div>
+          </div>
+          
+          <!-- Layer 1: Infrastructure (Bottom) -->
+          <div class="arch-layer" data-layer="infra" style="--layer-color: #5fa8a0;">
+            <div class="layer-depth"></div>
+            <div class="layer-content">
+              <span class="layer-num mono">L1</span>
+              <span class="layer-title">Infrastructure &amp; Security</span>
+              <span class="layer-tech mono">AWS · IAM · Networks</span>
+            </div>
+          </div>
         </div>
-        <div class="pg-shine"></div>
+      </div>
+      
+      <!-- Right side: Layer details panel -->
+      <div class="details-container">
+        <div class="details-panel" id="detailsPanel">
+          <!-- Dynamically loaded by script.js -->
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Supporting Foundations & Tools Grid -->
+    <div class="supporting-skills-grid reveal">
+      <!-- Card 1: CS Foundations -->
+      <div class="support-card">
+        <div class="sc-head">
+          <span class="sc-icon">📚</span>
+          <h3 class="sc-title">Computer Science Foundations</h3>
+        </div>
+        <div class="sc-chips">
+          <span>Data Structures &amp; Algorithms</span>
+          <span>OOP Principles</span>
+          <span>Operating Systems</span>
+          <span>DBMS Architecture</span>
+          <span>Computer Networks</span>
+        </div>
+      </div>
+      
+      <!-- Card 2: Developer Tooling & Workflow -->
+      <div class="support-card">
+        <div class="sc-head">
+          <span class="sc-icon">🛠️</span>
+          <h3 class="sc-title">Developer Tooling &amp; Workflow</h3>
+        </div>
+        <div class="sc-chips">
+          <span>Git / GitHub</span>
+          <span>Postman API Testing</span>
+          <span>VS Code &amp; IntelliJ</span>
+          <span>Google Gemini API</span>
+          <span>Wireshark</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">03 · Projects</div>
+    <h2 class="sec-title">Featured Projects</h2>
+    <p class="sec-desc">A selection of recent applications spanning full-stack streaming platforms, digital watermarking, and cloud-native detection pipelines.</p>
+
+    <div class="proj-list">
+      <div class="proj reveal">
+        <div class="proj-meta">
+          <div class="pid">PROJECT // 01</div>
+          <div class="pname">AetherCast Podcast Platform</div>
+          <div class="proj-stack">
+            <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>WebSockets</span><span>Supabase</span><span>Gemini AI</span>
+          </div>
+        </div>
+        <div class="proj-body">
+          <ul>
+            <li>Engineered a full-featured podcast streaming application with a responsive global audio controller and responsive playlist tracking.</li>
+            <li>Integrated Supabase Auth with a MongoDB metadata layer, securing API endpoints using JWT token validation for user sessions.</li>
+            <li>Leveraged the Google Gemini API to automatically generate semantic tags and episode summaries, incorporating robust fallback handlers.</li>
+            <li>Designed real-time playback synchronization across concurrent client sessions using Socket.io to support collaborative rooms.</li>
+          </ul>
+          <a href="https://github.com/bharathreddy55/AetherCast-MERN" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+        </div>
       </div>
 
-      <div class="proj-glass fade-up" id="pg2">
-        <div class="pg-inner">
-          <div class="pg-top">
-            <div class="pg-num mono">PROJECT // 02</div>
-            <div class="pg-badge">Live</div>
-          </div>
-          <div class="pg-emoji">🧠</div>
-          <h3 class="pg-title">GateLabs — AI GATE CS Platform</h3>
-          <p class="pg-desc">AI-powered preparation suite for GATE CS &amp; IT aspirants built with Vite, Tailwind CSS, Firebase, and Google Gemini AI for instant solution breakdowns.</p>
-          <div class="pg-stack">
+      <div class="proj reveal">
+        <div class="proj-meta">
+          <div class="pid">PROJECT // 02</div>
+          <div class="pname">GateLabs AI Preparation Platform</div>
+          <div class="proj-stack">
             <span>Vite</span><span>React</span><span>Tailwind CSS</span><span>Firebase</span><span>Gemini AI</span>
           </div>
-          <ul class="pg-list">
-            <li>Gemini AI automated question generation &amp; diagnostic feedback</li>
-            <li>Firebase auth, progress analytics &amp; real-time test evaluation</li>
-            <li>Topic-wise performance tracking and simulated mock tests</li>
-          </ul>
-          <a href="https://github.com/bharathreddy55/GateLabs" target="_blank" rel="noopener" class="pg-link mono">→ View Repository</a>
         </div>
-        <div class="pg-shine"></div>
+        <div class="proj-body">
+          <ul>
+            <li>Developed a comprehensive GATE CS &amp; IT preparation platform using React, Vite, and Tailwind CSS.</li>
+            <li>Integrated Gemini API to generate diagnostic study feedback and provide instant, step-by-step solution breakdowns for mock questions.</li>
+            <li>Configured a Firebase backend to manage user authentication, session state persistence, and performance metrics.</li>
+          </ul>
+          <a href="https://github.com/bharathreddy55/GateLabs" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+        </div>
       </div>
 
-      <div class="proj-glass fade-up" id="pg3">
-        <div class="pg-inner">
-          <div class="pg-top">
-            <div class="pg-num mono">PROJECT // 03</div>
-            <div class="pg-badge">Active</div>
-          </div>
-          <div class="pg-emoji">🔐</div>
-          <h3 class="pg-title">Digital Watermarking System</h3>
-          <p class="pg-desc">LSB &amp; DCT-based embedding framework to hide QR-encoded data inside images — resilient to compression, noise, and format conversion attacks.</p>
-          <div class="pg-stack">
+      <div class="proj reveal">
+        <div class="proj-meta">
+          <div class="pid">PROJECT // 03</div>
+          <div class="pname">Digital Watermarking System</div>
+          <div class="proj-stack">
             <span>Python</span><span>LSB</span><span>DCT</span><span>QR Encoding</span><span>OpenCV</span>
           </div>
-          <ul class="pg-list">
-            <li>Full pipeline: QR gen → bit encode → DCT → reconstruct</li>
-            <li>Minimal perceptual distortion, high PSNR on extraction</li>
-            <li>Resilient against real-world image attacks</li>
-          </ul>
-          <a href="https://github.com/bharathreddy55/Digital-Watermarking-Images" target="_blank" rel="noopener" class="pg-link mono">→ View Repository</a>
         </div>
-        <div class="pg-shine"></div>
+        <div class="proj-body">
+          <ul>
+            <li>Developed an image watermarking framework implementing Least Significant Bit (LSB) and Discrete Cosine Transform (DCT) embedding methods.</li>
+            <li>Designed an end-to-end pipeline covering QR-code generation, block-wise coefficient adjustment, and high-fidelity image reconstruction.</li>
+            <li>Evaluated system robustness under data compression and Gaussian noise, verifying high Peak Signal-to-Noise Ratio (PSNR) retrieval.</li>
+          </ul>
+          <a href="https://github.com/bharathreddy55/Digital-Watermarking-Images" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+        </div>
       </div>
 
-      <div class="proj-glass fade-up" id="pg4">
-        <div class="pg-inner">
-          <div class="pg-top">
-            <div class="pg-num mono">PROJECT // 04</div>
-            <div class="pg-badge">Deployed</div>
+      <div class="proj reveal">
+        <div class="proj-meta">
+          <div class="pid">PROJECT // 04</div>
+          <div class="pname">Smart Queue Alert System</div>
+          <div class="proj-stack">
+            <span>AWS Rekognition</span><span>S3</span><span>IAM</span><span>Python</span>
           </div>
-          <div class="pg-emoji">☁️</div>
-          <h3 class="pg-title">Smart Queue Alert System</h3>
-          <p class="pg-desc">Cloud-based crowd detection via AWS Rekognition &amp; Google Colab — classifies canteen queue as Low / Moderate / Crowded in real time.</p>
-          <div class="pg-stack">
-            <span>AWS Rekognition</span><span>S3</span><span>IAM</span><span>Colab</span>
-          </div>
-          <ul class="pg-list">
-            <li>3-tier crowd threshold classification</li>
-            <li>IAM-secured Rekognition — zero exposed credentials</li>
-            <li>Fully cloud-native, no local server needed</li>
-          </ul>
-          <a href="https://github.com/bharathreddy55/Smart-Queue-Alert-System" target="_blank" rel="noopener" class="pg-link mono">→ View Repository</a>
         </div>
-        <div class="pg-shine"></div>
+        <div class="proj-body">
+          <ul>
+            <li>Engineered an automated queue monitoring system leveraging AWS Rekognition for computer-vision-based object detection.</li>
+            <li>Developed a Python pipeline to process incoming camera feeds, classifying queue capacity levels based on density thresholds.</li>
+            <li>Configured secure storage patterns using Amazon S3 bucket policies and fine-grained AWS IAM roles for credentials isolation.</li>
+          </ul>
+          <a href="https://github.com/bharathreddy55/Smart-Queue-Alert-System" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+        </div>
       </div>
 
-      <div class="proj-glass fade-up" id="pg5">
-        <div class="pg-inner">
-          <div class="pg-top">
-            <div class="pg-num mono">PROJECT // 05</div>
-            <div class="pg-badge">Live</div>
-          </div>
-          <div class="pg-emoji">⚡</div>
-          <h3 class="pg-title">Quiz-Me Platform</h3>
-          <p class="pg-desc">Interactive MCQ platform with real-time scoring, dynamic question rendering, instant feedback and modular architecture for scaling.</p>
-          <div class="pg-stack">
+      <div class="proj reveal">
+        <div class="proj-meta">
+          <div class="pid">PROJECT // 05</div>
+          <div class="pname">Quiz-Me Platform</div>
+          <div class="proj-stack">
             <span>Java</span><span>JavaScript</span><span>Node.js</span><span>HTML/CSS</span>
           </div>
-          <ul class="pg-list">
-            <li>Real-time scoring &amp; instant feedback</li>
-            <li>Modular question management — scales cleanly</li>
-            <li>Optimised load path for smooth UX</li>
+        </div>
+        <div class="proj-body">
+          <ul>
+            <li>Built a dynamic quiz platform featuring client-side rendering, instant feedback loops, and session tracking.</li>
+            <li>Designed a modular question engine that decouples question metadata loading from the assessment evaluation state machine.</li>
+            <li>Optimized application script loading and asset sizes to deliver responsive load times and a lag-free client interface.</li>
           </ul>
-          <a href="https://github.com/bharathreddy55/Quiz---Me" target="_blank" rel="noopener" class="pg-link mono">→ View Repository</a>
+          <a href="https://github.com/bharathreddy55/Quiz---Me" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
         </div>
-        <div class="pg-shine"></div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ SKILLS ═══════════════ -->
-<section id="skills" class="section">
+<section id="certs">
   <div class="wrap">
-    <div class="sec-label fade-up"><span class="num-tag">03</span>Skills</div>
-    <h2 class="sec-h fade-up">Stack, by layer. <span class="grad">Every tool earned.</span></h2>
-
-    <div class="skills-grid">
-
-      <div class="skill-cards">
-
-        <div class="skill-glass fade-up">
-          <div class="sg-head">
-            <div class="sg-icon ic-orange">⚙</div>
-            <div><div class="sg-title">Backend</div><div class="sg-sub mono">Core layer</div></div>
-            <div class="sg-pct mono">95%</div>
-          </div>
-          <div class="sg-bar"><div class="sg-fill" style="--p:95%"></div></div>
-          <div class="sg-chips">
-            <span><svg viewBox="0 0 24 24"><path fill="#E76F00" d="M4.15 17.65c0 0-1.57.8.96 1.13 3.08.39 9.38.44 12.83-.02 1.25-.17 2.1-.64 2.1-.64s-.97.43-2.61.69c-3.69.58-10.15.52-13.28-.16-.76-.17-1.12-.41-1.12-.41zM2.85 19.95c0 0-1.63.95.89 1.34 3.7.57 11.23.63 15.34-.05 1.5-.25 2.52-.94 2.52-.94s-1.16.63-3.13 1.01c-4.42.85-12.16.76-15.91-.25-.91-.25-1.34-.61-1.34-.61zM11.66 0s-2.73 3.1.28 6.13c2.72 2.74 1.36 4.95.02 6.87 2.7-2.69 3.02-4.9.48-7.39-2.07-2.03-.78-5.61-.78-5.61zM15.42 6.64s-1.89 1.76.19 3.86c1.69 1.71 1.04 3.42-.4 4.79 2.15-1.92 2.4-3.79.52-5.46-1.52-1.36-.31-3.19-.31-3.19z"/></svg>Java</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#3776AB" d="M11.898 0c-5.18 0-4.856 2.253-4.856 2.253l.007 2.33h4.92v.693H5.097S2 4.945 2 10.174c0 5.23 2.7 5.04 2.7 5.04h1.617v-2.285s-.088-2.73 2.7-2.73h4.646s2.57.043 2.57-2.527V2.585S17.078 0 11.898 0zM8.88 1.488a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm6.155 8.243s2.7.088 2.7 5.23c0 5.14-2.344 4.97-2.344 4.97h-1.617v2.285s.088 2.73-2.7 2.73H6.428s-2.57-.043-2.57 2.527v5.132s-.845 2.585 4.335 2.585c5.18 0 4.856-2.253 4.856-2.253l-.007-2.33h-4.92v-.693h6.872s3.097.33 3.097-4.898c0-5.23-2.7-5.04-2.7-5.04h-1.617v-2.285s.088-2.73-2.7-2.73z"/></svg>Python</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#6DB33F" d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm-1.8 17.5l-4.5-4.5 1.4-1.4 3.1 3.1 7.1-7.1 1.4 1.4-8.5 8.5z"/></svg>Spring Boot</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#F7DF1E" d="M0 0h24v24H0z"/><path fill="#000000" d="M6.75 18.75l1.875-1.125c.375.675.825 1.125 1.725 1.125.825 0 1.425-.375 1.425-1.8v-8.25h2.55v8.325c0 2.775-1.575 3.975-3.975 3.975-2.175 0-3.375-1.125-3.6-2.25zm8.925.225l1.875-1.125c.525.825 1.35 1.275 2.475 1.275 1.125 0 1.8-.525 1.8-1.275 0-.825-.675-1.125-1.875-1.65l-.675-.3c-1.875-.825-3.15-1.875-3.15-3.825 0-2.175 1.725-3.75 4.275-3.75 1.875 0 3.15.675 3.975 2.1l-1.8 1.125c-.45-.75-1.05-1.05-2.175-1.05-.9 0-1.575.45-1.575 1.125 0 .75.525 1.05 1.65 1.5l.675.3c2.175.9 3.375 1.875 3.375 3.9 0 2.4-1.875 3.9-4.5 3.9-2.55 0-3.9-1.2-4.575-2.4Z"/></svg>SQL</span>
-          </div>
-        </div>
-
-        <div class="skill-glass fade-up">
-          <div class="sg-head">
-            <div class="sg-icon ic-blue">◈</div>
-            <div><div class="sg-title">Frontend</div><div class="sg-sub mono">Interface layer</div></div>
-            <div class="sg-pct mono">88%</div>
-          </div>
-          <div class="sg-bar"><div class="sg-fill" style="--p:88%"></div></div>
-          <div class="sg-chips">
-            <span><svg viewBox="0 0 24 24"><path fill="#61DAFB" d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0-7c-5.523 0-10 2.239-10 5s4.477 5 10 5 10-2.239 10-5-4.477-5-10-5zm0 17c-5.523 0-10-2.239-10-5s4.477-5 10-5 10 2.239 10 5-4.477 5-10 5z"/></svg>React</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#FFFFFF" d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm4.5 16.5l-6-9.5h2.5l4.5 7.5v2h-1z"/></svg>Next.js</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#F7DF1E" d="M0 0h24v24H0z"/><path fill="#000" d="M3 3h18v18H3z"/></svg>JavaScript</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#3178C6" d="M0 0h24v24H0z"/><path fill="#FFF" d="M11.5 14.5h-2v-7h-3v-2h8v2h-3v7zM15 14.5v-9h2.5v7h4v2H15z"/></svg>TypeScript</span>
-          </div>
-        </div>
-
-        <div class="skill-glass fade-up">
-          <div class="sg-head">
-            <div class="sg-icon ic-purple">◉</div>
-            <div><div class="sg-title">Databases</div><div class="sg-sub mono">Data layer</div></div>
-            <div class="sg-pct mono">85%</div>
-          </div>
-          <div class="sg-bar"><div class="sg-fill" style="--p:85%"></div></div>
-          <div class="sg-chips">
-            <span><svg viewBox="0 0 24 24"><path fill="#4169E1" d="M12 0C5.37 0 0 4.03 0 9c0 3.31 2.42 6.17 6 7.63V24l5.25-3.15C11.5 20.95 11.75 21 12 21c6.63 0 12-4.03 12-9s-5.37-9-12-9z"/></svg>PostgreSQL</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#4479A1" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>MySQL</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#47A248" d="M12 0L2 12l10 12 10-12L12 0z"/></svg>MongoDB</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#DC382D" d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0z"/></svg>Redis</span>
-          </div>
-        </div>
-
-        <div class="skill-glass fade-up">
-          <div class="sg-head">
-            <div class="sg-icon ic-cyan">☁</div>
-            <div><div class="sg-title">Cloud / DevOps</div><div class="sg-sub mono">Infrastructure</div></div>
-            <div class="sg-pct mono">78%</div>
-          </div>
-          <div class="sg-bar"><div class="sg-fill" style="--p:78%"></div></div>
-          <div class="sg-chips">
-            <span><svg viewBox="0 0 24 24"><path fill="#FF9900" d="M12 0L2 6v12l10 6 10-6V6L12 0z"/></svg>AWS EC2</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#FF9900" d="M12 4L4 8v8l8 4 8-4V8l-8-4z"/></svg>S3</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#FF9900" d="M12 0L2 12l10 12 10-12L12 0z"/></svg>Lambda</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#2496ED" d="M13 3h3v3h-3V3zm-4 0h3v3H9V3zM5 3h3v3H5V3zm-4 8h19v3H1v-3z"/></svg>Docker</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#F05032" d="M23.54 11.23L12.77.46a1.54 1.54 0 0 0-2.18 0L8.7 2.36l3.12 3.12a1.83 1.83 0 0 1 2.3 2.33l3.01 3.01a1.83 1.83 0 0 1 2.41 2.41l3.2-3.2a1.54 1.54 0 0 0 0-2.18z"/></svg>Git</span>
-          </div>
-        </div>
-
-        <div class="skill-glass fade-up">
-          <div class="sg-head">
-            <div class="sg-icon ic-green">🛡</div>
-            <div><div class="sg-title">Security</div><div class="sg-sub mono">Cross-cutting</div></div>
-            <div class="sg-pct mono">82%</div>
-          </div>
-          <div class="sg-bar"><div class="sg-fill" style="--p:82%"></div></div>
-          <div class="sg-chips">
-            <span><svg viewBox="0 0 24 24"><path fill="#8dbd96" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>SIEM</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#8dbd96" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>IDS</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#8dbd96" d="M12 0L2 6v12l10 6 10-6V6L12 0z"/></svg>Wireshark</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#FF9900" d="M12 2L4 6v12l8 4 8-4V6l-8-4z"/></svg>IAM</span>
-          </div>
-        </div>
-
-        <div class="skill-glass fade-up">
-          <div class="sg-head">
-            <div class="sg-icon ic-pink">◐</div>
-            <div><div class="sg-title">CS Foundations</div><div class="sg-sub mono">Core knowledge</div></div>
-            <div class="sg-pct mono">92%</div>
-          </div>
-          <div class="sg-bar"><div class="sg-fill" style="--p:92%"></div></div>
-          <div class="sg-chips">
-            <span><svg viewBox="0 0 24 24"><path fill="#c5a880" d="M12 2L2 7l10 5 10-5-10-5zm0 9L2 6v11l10 5 10-5V6l-10 5z"/></svg>DSA</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#c5a880" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>OOP</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#c5a880" d="M4 4h16v16H4z"/></svg>OS</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#c5a880" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>DBMS</span>
-            <span><svg viewBox="0 0 24 24"><path fill="#c5a880" d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg>Networks</span>
-          </div>
-        </div>
-
+    <div class="eyebrow">04 · Certifications &amp; Training</div>
+    <h2 class="sec-title">Credentials &amp; Practical Training</h2>
+    <div class="cert-grid">
+      <div class="cert reveal">
+        <div class="org">Oracle University</div>
+        <div class="name">OCI 2025 Certified Generative AI Professional</div>
+        <div class="meta">Exam 1Z0-1127-25 · Issued Jul 22, 2025 · Valid to Jul 22, 2027</div>
+        <div class="score">✓ Scored 96% (pass mark 68%)</div>
       </div>
-
-      <div class="sphere-col fade-right">
-        <canvas id="skillSphere"></canvas>
-        <p class="sphere-hint mono">⟳ drag to rotate</p>
+      <div class="cert reveal">
+        <div class="org">Google / Coursera</div>
+        <div class="name">Google Cybersecurity Professional Certificate</div>
+        <div class="meta">9 courses · SIEM, IDS, Python, Linux, SQL · Issued Jul 18, 2025</div>
+        <div class="score">✓ Academic credentials verified</div>
       </div>
-
+      <div class="cert reveal">
+        <div class="org">TATA / Forage</div>
+        <div class="name">Cybersecurity Analyst Job Simulation</div>
+        <div class="meta">IAM fundamentals, strategy &amp; platform integration · Completed Aug 14, 2025</div>
+        <div class="score">✓ Completed virtual simulation program</div>
+      </div>
+      <div class="cert reveal">
+        <div class="org">Pantech Prolabs</div>
+        <div class="name">Full Stack Web Development Internship</div>
+        <div class="meta">Certificate of Internship · Issued Dec 22, 2024</div>
+        <div class="score">✓ Completed internship training curriculum (No. CERT_MY7HRD18)</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ ABOUT ═══════════════ -->
-<section id="about" class="section">
+<section id="education">
   <div class="wrap">
-    <div class="sec-label fade-up"><span class="num-tag">04</span>About</div>
-    <h2 class="sec-h fade-up">Java backend. React frontend.<br><span class="grad">Postgres underneath.</span></h2>
-
-    <div class="about-grid">
-
-      <div class="about-photo-col fade-left">
-        <div class="glass-photo-card" id="photoTilt">
-          <img src="Photos/bharath-profile.jpg" alt="Bharath Kumar Reddy Allampati">
-          <div class="photo-bar mono">
-            <span>bharath.profile.jpg</span>
-            <span class="live-chip">● verified</span>
-          </div>
-        </div>
-
-        <!-- Personal Info Panel / Stats Dashboard -->
-        <div class="quick-info">
-          <div class="qi-row"><span class="qi-icon">🎓</span><div><div class="qi-l mono">Institute</div><div class="qi-v">VIT Vellore</div></div></div>
-          <div class="qi-row"><span class="qi-icon">📍</span><div><div class="qi-l mono">Location</div><div class="qi-v">Vellore, TN</div></div></div>
-          <div class="qi-row"><span class="qi-icon">🚀</span><div><div class="qi-l mono">Status</div><div class="qi-v open">Open to Roles</div></div></div>
-        </div>
-
-        <div class="dashboard-stats">
-          <div class="dstat">
-            <div class="dstat-n"><span class="cu" data-v="8.39" data-d="2">0</span><sub>/10</sub></div>
-            <div class="dstat-l mono">CGPA</div>
-          </div>
-          <div class="dstat">
-            <div class="dstat-n"><span class="cu" data-v="4" data-d="0">0</span></div>
-            <div class="dstat-l mono">Certs</div>
-          </div>
-          <div class="dstat">
-            <div class="dstat-n"><span class="cu" data-v="3" data-d="0">0</span><sub>+</sub></div>
-            <div class="dstat-l mono">Projects</div>
-          </div>
-        </div>
+    <div class="eyebrow">05 · Education</div>
+    <h2 class="sec-title">Path to here.</h2>
+    <div class="trace-list">
+      <div class="hop reveal">
+        <div class="yr mono">2022 — June 2026</div>
+        <div class="h">B.Tech, Computer Science (Information Security)</div>
+        <div class="d">Vellore Institute of Technology, Vellore, Tamil Nadu — CGPA 8.39/10</div>
       </div>
-
-      <div class="about-text-col fade-right">
-        <p class="about-lead">I'm a final-year CS undergrad specialising in <mark>Information Security</mark> at VIT Vellore, building full-stack applications end to end.</p>
-        <p class="about-p">Backend in <strong>Java</strong>, frontend in <strong>React/Next.js</strong>, data in <strong>PostgreSQL</strong> — working the full path from a feature idea to a deployed, working application.</p>
-        <p class="about-p">A background in security &amp; cloud (<strong>AWS, IAM, network tooling</strong>) means I think about how a system fails before I ship it.</p>
-
-        <div class="tag-sets">
-          <div class="tag-set">
-            <span class="ts-label mono">Core</span>
-            <div class="chips"><span class="chip c1">Java</span><span class="chip c2">React</span><span class="chip c3">PostgreSQL</span><span class="chip c1">AWS</span></div>
-          </div>
-          <div class="tag-set">
-            <span class="ts-label mono">Learning</span>
-            <div class="chips"><span class="chip c4">Spring Boot</span><span class="chip c4">Docker</span><span class="chip c4">System Design</span></div>
-          </div>
-        </div>
-
-        <div class="about-socials">
-          <a href="https://www.linkedin.com/in/bharath-kumar-reddy-allampati-930152275/" target="_blank" rel="noopener" class="soc-btn linkedin">LinkedIn ↗</a>
-          <a href="https://github.com/bharathreddy55" target="_blank" rel="noopener" class="soc-btn github">GitHub ↗</a>
-        </div>
+      <div class="hop reveal">
+        <div class="yr mono">2020 — 2022</div>
+        <div class="h">Class 12, State Board</div>
+        <div class="d">Narayana Junior College, Nellore, Andhra Pradesh — 92.2%</div>
       </div>
-
+      <div class="hop reveal">
+        <div class="yr mono">2019 — 2020</div>
+        <div class="h">Class 10, State Board</div>
+        <div class="d">Narayana High School, Nellore, Andhra Pradesh — 99.5%</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ CREDENTIALS (EDUCATION & CERTS) ═══════════════ -->
-<section id="credentials" class="section">
+<footer id="contact">
   <div class="wrap">
-    <div class="sec-label fade-up"><span class="num-tag">05</span>Credentials</div>
-    <h2 class="sec-h fade-up">Education &amp; <span class="grad">Certifications.</span></h2>
-
-    <div class="credentials-split">
-      
-      <!-- Education (Left Column) -->
-      <div class="edu-col fade-left">
-        <h3 class="cred-sub-title mono">🎓 Education Timeline</h3>
-        <div class="edu-timeline">
-          <div class="edu-spine"></div>
-
-          <div class="edu-item">
-            <div class="edu-node active-node"></div>
-            <div class="edu-glass">
-              <div class="edu-current-tag">Graduated</div>
-              <div class="edu-yr mono">2022 — June 2026</div>
-              <h4 class="edu-deg">B.Tech, Computer Science (Information Security)</h4>
-              <div class="edu-inst">Vellore Institute of Technology, Vellore</div>
-              <div class="edu-chips"><span class="ec-chip primary-ec">CGPA: 8.39 / 10</span></div>
-            </div>
-          </div>
-
-          <div class="edu-item">
-            <div class="edu-node"></div>
-            <div class="edu-glass">
-              <div class="edu-yr mono">2020 — 2022</div>
-              <h4 class="edu-deg">Class 12, State Board</h4>
-              <div class="edu-inst">Narayana Junior College, Nellore</div>
-              <div class="edu-chips"><span class="ec-chip">92.2%</span></div>
-            </div>
-          </div>
-
-          <div class="edu-item">
-            <div class="edu-node"></div>
-            <div class="edu-glass">
-              <div class="edu-yr mono">2019 — 2020</div>
-              <h4 class="edu-deg">Class 10, State Board</h4>
-              <div class="edu-inst">Narayana High School, Nellore</div>
-              <div class="edu-chips"><span class="ec-chip top-ec">99.5%</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Certifications (Right Column) -->
-      <div class="cert-col fade-right">
-        <h3 class="cred-sub-title mono">🏆 Certifications</h3>
-        <div class="cert-stack">
-
-          <div class="cert-glass">
-            <div class="cg-stripe oracle-stripe"></div>
-            <div class="cg-badge oracle-badge">O</div>
-            <div class="cg-content">
-              <div class="cg-org mono">Oracle University</div>
-              <h4 class="cg-name">OCI 2025 Certified Generative AI Professional</h4>
-              <div class="cg-meta">Exam 1Z0-1127-25 · Jul 2025 · Valid to Jul 2027</div>
-              <div class="cg-score-row">
-                <div class="cg-bar"><div class="cg-fill" style="--s:96%"></div></div>
-                <span class="mono">96% <small>(pass 68%)</small></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="cert-glass">
-            <div class="cg-stripe google-stripe"></div>
-            <div class="cg-badge google-badge">G</div>
-            <div class="cg-content">
-              <div class="cg-org mono">Google / Coursera</div>
-              <h4 class="cg-name">Google Cybersecurity Professional Certificate</h4>
-              <div class="cg-meta">9 courses · SIEM, IDS, Python, Linux, SQL · Jul 2025</div>
-              <div class="cg-score-row">
-                <div class="cg-bar"><div class="cg-fill" style="--s:100%"></div></div>
-                <span class="mono">9/9 Completed</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="cert-glass">
-            <div class="cg-stripe tata-stripe"></div>
-            <div class="cg-badge tata-badge">T</div>
-            <div class="cg-content">
-              <div class="cg-org mono">TATA / Forage</div>
-              <h4 class="cg-name">Cybersecurity Analyst Job Simulation</h4>
-              <div class="cg-meta">IAM fundamentals, strategy &amp; platform integration · Aug 2025</div>
-              <div class="cg-score-row">
-                <div class="cg-bar"><div class="cg-fill" style="--s:100%"></div></div>
-                <span class="mono">Completed</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="cert-glass">
-            <div class="cg-stripe pantech-stripe"></div>
-            <div class="cg-badge pantech-badge">P</div>
-            <div class="cg-content">
-              <div class="cg-org mono">Pantech Prolabs</div>
-              <h4 class="cg-name">Full Stack Web Development — Internship</h4>
-              <div class="cg-meta">Certificate of Internship · Dec 22, 2024</div>
-              <div class="cg-score-row">
-                <div class="cg-bar"><div class="cg-fill" style="--s:100%"></div></div>
-                <span class="mono">CERT_MY7HRD18</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+    <div class="eyebrow">06 · Contact</div>
+    <h1 class="contact-title">Open to full stack Java developer roles. <span class="accent">Let's talk.</span></h1>
+    <div class="contact-row">
+      <div class="contact-item"><div class="k">Email</div><div class="v"><a href="mailto:bharath02032508@gmail.com">bharath02032508@gmail.com</a></div></div>
+      <div class="contact-item"><div class="k">Phone</div><div class="v">+91-8977984507</div></div>
+      <div class="contact-item"><div class="k">LinkedIn</div><div class="v"><a href="https://linkedin.com/in/bharath-kumar-reddy-allampati/" target="_blank">linkedin.com/in/bharath-kumar-reddy-allampati</a></div></div>
+      <div class="contact-item"><div class="k">GitHub</div><div class="v"><a href="https://github.com/bharathreddy55" target="_blank">github.com/bharathreddy55</a></div></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Bharath Kumar Reddy Allampati</span>
+      <span>Built with HTML / CSS / JS — deployable on GitHub Pages</span>
     </div>
   </div>
-</section>
+</footer>
 
-<!-- ═══════════════ CONTACT ═══════════════ -->
-<section id="contact" class="section section-contact">
-  <div class="wrap">
-    <div class="contact-glass fade-up">
-      <div class="sec-label"><span class="num-tag">06</span>Contact</div>
-      <h2 class="contact-h">Open to full stack roles.<br><span class="grad">Let's talk.</span></h2>
-      <p class="contact-sub">Actively looking for internships &amp; full-time opportunities. I respond within 24 hours.</p>
-
-      <div class="contact-cards">
-        <a href="mailto:bharath02032508@gmail.com" class="cc-card email-cc">
-          <div class="cc-ico">✉</div>
-          <div class="cc-lbl mono">Email</div>
-          <div class="cc-val">bharath02032508@gmail.com</div>
-          <div class="cc-cta mono">Send message →</div>
-        </a>
-        <a href="tel:+918977984507" class="cc-card phone-cc">
-          <div class="cc-ico">📞</div>
-          <div class="cc-lbl mono">Phone</div>
-          <div class="cc-val">+91-8977984507</div>
-          <div class="cc-cta mono">Call me →</div>
-        </a>
-        <a href="https://www.linkedin.com/in/bharath-kumar-reddy-allampati-930152275/" target="_blank" rel="noopener" class="cc-card li-cc">
-          <div class="cc-ico cc-txt-ico">in</div>
-          <div class="cc-lbl mono">LinkedIn</div>
-          <div class="cc-val">bharath-kumar-reddy-allampati</div>
-          <div class="cc-cta mono">Connect →</div>
-        </a>
-        <a href="https://github.com/bharathreddy55" target="_blank" rel="noopener" class="cc-card gh-cc">
-          <div class="cc-ico cc-txt-ico">GH</div>
-          <div class="cc-lbl mono">GitHub</div>
-          <div class="cc-val">github.com/bharathreddy55</div>
-          <div class="cc-cta mono">View repos →</div>
-        </a>
-      </div>
-
-      <div class="foot-bar">
-        <span>© 2026 Bharath Kumar Reddy Allampati</span>
-        <span class="mono">HTML · CSS · JS · Three.js</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

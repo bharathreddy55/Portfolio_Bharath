@@ -143,7 +143,7 @@ story.append(Paragraph(p1_title, body_style))
 story.append(Paragraph('<i>React.js, Node.js, Express.js, MongoDB Atlas, Supabase Auth, Gemini API</i>', italic_sub))
 story.append(Spacer(1, 1))
 story.append(Paragraph('• Built a full-stack podcast platform with React 18, Node.js/Express, MongoDB Atlas, and Supabase authentication, featuring a global sticky audio player, PWA offline support, and live synced transcripts. Added automated API tests for authentication, validation, and core backend workflows.', bullet_style))
-story.append(Paragraph('• Integrated Google Gemini 1.5 Flash API for AI-powered episode summaries and smart tagging, along with real-time listening parties, creator drafts workspace, and in-browser recording with waveform visualization.', bullet_style))
+story.append(Paragraph('• Integrated Google Gemini 1.5 Flash API for AI-powered episode summaries and smart tagging, along with real-time playback synchronization, creator drafts workspace, and in-browser recording with waveform visualization.', bullet_style))
 story.append(Paragraph('• Deployed frontend on Vercel and backend on Render with a full admin command center for platform-wide metrics, user management, and content moderation.', bullet_style))
 story.append(Spacer(1, 4))
 
@@ -154,7 +154,7 @@ story.append(Paragraph('<i>React.js, JavaScript, CSS, Firebase, Gemini API, AI I
 story.append(Spacer(1, 1))
 story.append(Paragraph('• Developed a comprehensive GATE CS &amp; IT preparation platform featuring topic-wise practice, customizable CBT-style mock tests, performance analytics, and an AI-powered study assistant.', bullet_style))
 story.append(Paragraph('• Built configurable mock test workflows with subject selection, question navigation, negative marking, mistake analysis, and an integrated calculator aligned with GATE exam patterns.', bullet_style))
-story.append(Paragraph('• Designed modular workflows for topic-wise practice, configurable mock tests, question navigation, scoring, negative marking, and performance analysis.', bullet_style))
+story.append(Paragraph('• Integrated Firebase database and authentication systems to persist user test performance data and subject-wise analytics.', bullet_style))
 story.append(Spacer(1, 4))
 
 # Project 3
