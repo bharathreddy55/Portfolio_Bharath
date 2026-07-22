@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1.1">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -90,374 +90,52 @@
     <h2 class="sec-title">Technical Expertise</h2>
     <p class="sec-desc">A comprehensive, layered breakdown of technologies, frameworks, databases, and core computer science fundamentals.</p>
 
-    <!-- Swagger-style API Container -->
-    <div class="swagger-container reveal">
+    <!-- Interactive Physics Skills Graph -->
+    <div class="skills-physics-container reveal">
+      <!-- Left side: Physics Canvas -->
+      <div class="canvas-wrapper">
+        <div class="stack-instruction mono">Drag or hover nodes to inspect backend &amp; frontend links:</div>
+        <canvas id="skillsCanvas" width="640" height="420"></canvas>
+      </div>
       
-      <!-- API Header / Title Block -->
-      <div class="swagger-header">
-        <div class="swagger-title-row">
-          <h3 class="api-title">Bharath Kumar Reddy Allampati API</h3>
-          <span class="api-version mono">v1.0.0</span>
-          <span class="api-oas mono">OAS 3.0</span>
-        </div>
-        <p class="api-desc">RESTful API specification presenting professional skills, database capabilities, language proficiencies, and system security credentials.</p>
-        <div class="api-server mono">
-          <span class="lbl">Server URL:</span>
-          <span class="url">https://api.bharath.dev/v1</span>
+      <!-- Right side: Detail Panel -->
+      <div class="physics-details-container">
+        <div class="physics-details-panel" id="physicsDetailsPanel">
+          <!-- Dynamic details content injected by script.js -->
         </div>
       </div>
+    </div>
 
-      <!-- API Operations list -->
-      <div class="swagger-operations">
-        
-        <!-- Endpoint 1: GET /languages -->
-        <div class="op-block get" id="op-languages">
-          <div class="op-header">
-            <span class="op-method mono">GET</span>
-            <span class="op-path mono">/skills/languages</span>
-            <span class="op-summary">Retrieve programming language proficiencies and OOP foundations</span>
-            <span class="op-toggle-icon">▼</span>
-          </div>
-          <div class="op-details">
-            <div class="op-section">
-              <div class="section-hdr">Parameters</div>
-              <div class="table-wrapper">
-                <table class="params-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Type</th>
-                      <th>Data Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="param-name mono">include_oop</td>
-                      <td>Filter to include object-oriented principles data (true/false)</td>
-                      <td>query</td>
-                      <td class="param-type mono">boolean</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            
-            <div class="op-section try-section">
-              <button class="btn-swagger try-btn">Try it out</button>
-              <button class="btn-swagger exec-btn hidden">Execute</button>
-              <button class="btn-swagger cancel-btn hidden">Cancel</button>
-            </div>
-            
-            <div class="op-section response-section hidden">
-              <div class="section-hdr">Responses</div>
-              <div class="response-headers mono">Code: 200 Success</div>
-              
-              <!-- Curl request -->
-              <div class="response-sub-hdr mono">Curl Command</div>
-              <pre class="code-block"><code class="language-bash">curl -X 'GET' \
-  'https://api.bharath.dev/v1/skills/languages?include_oop=true' \
-  -H 'accept: application/json'</code></pre>
-              
-              <!-- Response body -->
-              <div class="response-sub-hdr mono">Response Body</div>
-              <pre class="code-block"><code class="language-json">{
-  "languages": {
-    "java": {
-      "frameworks": ["Spring Boot", "Spring MVC"],
-      "core": ["OOP", "Collections Framework", "Streams API", "Exceptions"]
-    },
-    "javascript": {
-      "runtime": "Node.js",
-      "libraries": ["React.js", "Express.js"]
-    },
-    "python": {
-      "use_case": "Scripts, OpenCV Data Processing"
-    },
-    "sql": {
-      "standard": "ANSI SQL"
-    }
-  },
-  "oop_foundations": [
-    "Inheritance",
-    "Polymorphism",
-    "Abstraction",
-    "Encapsulation"
-  ]
-}</code></pre>
-            </div>
-          </div>
+    <!-- Supporting Foundations & Tools Grid -->
+    <div class="supporting-skills-grid reveal">
+      <!-- Card 1: CS Foundations -->
+      <div class="support-card">
+        <div class="sc-head">
+          <span class="sc-icon">📚</span>
+          <h3 class="sc-title">Computer Science Foundations</h3>
         </div>
-
-        <!-- Endpoint 2: GET /backend -->
-        <div class="op-block get" id="op-backend">
-          <div class="op-header">
-            <span class="op-method mono">GET</span>
-            <span class="op-path mono">/skills/backend</span>
-            <span class="op-summary">Retrieve server-side architectures and API routing layers</span>
-            <span class="op-toggle-icon">▼</span>
-          </div>
-          <div class="op-details">
-            <div class="op-section">
-              <div class="section-hdr">Parameters</div>
-              <div class="table-wrapper">
-                <table class="params-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Type</th>
-                      <th>Data Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="param-name mono">detailed</td>
-                      <td>Toggle returning full dependency listings (true/false)</td>
-                      <td>query</td>
-                      <td class="param-type mono">boolean</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            
-            <div class="op-section try-section">
-              <button class="btn-swagger try-btn">Try it out</button>
-              <button class="btn-swagger exec-btn hidden">Execute</button>
-              <button class="btn-swagger cancel-btn hidden">Cancel</button>
-            </div>
-            
-            <div class="op-section response-section hidden">
-              <div class="section-hdr">Responses</div>
-              <div class="response-headers mono">Code: 200 Success</div>
-              
-              <!-- Curl request -->
-              <div class="response-sub-hdr mono">Curl Command</div>
-              <pre class="code-block"><code class="language-bash">curl -X 'GET' \
-  'https://api.bharath.dev/v1/skills/backend?detailed=true' \
-  -H 'accept: application/json'</code></pre>
-              
-              <!-- Response body -->
-              <div class="response-sub-hdr mono">Response Body</div>
-              <pre class="code-block"><code class="language-json">{
-  "application_logic": {
-    "java_ecosystem": {
-      "framework": "Spring Boot / Spring Framework",
-      "design_patterns": ["MVC", "Singleton", "Repository", "Factory"],
-      "features": ["Dependency Injection", "AOP", "REST Controllers"]
-    },
-    "javascript_ecosystem": {
-      "runtime": "Node.js",
-      "framework": "Express.js",
-      "realtime_comms": "Socket.io (WebSockets)"
-    }
-  },
-  "api_standardization": [
-    "RESTful API design",
-    "JSON Web Token (JWT) Security",
-    "Asynchronous Event Handling"
-  ]
-}</code></pre>
-            </div>
-          </div>
+        <div class="sc-chips">
+          <span>Data Structures &amp; Algorithms</span>
+          <span>OOP Principles</span>
+          <span>Operating Systems</span>
+          <span>DBMS Architecture</span>
+          <span>Computer Networks</span>
         </div>
-
-        <!-- Endpoint 3: GET /databases -->
-        <div class="op-block get" id="op-databases">
-          <div class="op-header">
-            <span class="op-method mono">GET</span>
-            <span class="op-path mono">/skills/databases</span>
-            <span class="op-summary">Retrieve relational, document, and persistent storage technologies</span>
-            <span class="op-toggle-icon">▼</span>
-          </div>
-          <div class="op-details">
-            <div class="op-section">
-              <div class="section-hdr">Parameters</div>
-              <div class="table-wrapper">
-                <table class="params-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Type</th>
-                      <th>Data Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="param-name mono">replica_check</td>
-                      <td>Show hosting/replication types (true/false)</td>
-                      <td>query</td>
-                      <td class="param-type mono">boolean</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            
-            <div class="op-section try-section">
-              <button class="btn-swagger try-btn">Try it out</button>
-              <button class="btn-swagger exec-btn hidden">Execute</button>
-              <button class="btn-swagger cancel-btn hidden">Cancel</button>
-            </div>
-            
-            <div class="op-section response-section hidden">
-              <div class="section-hdr">Responses</div>
-              <div class="response-headers mono">Code: 200 Success</div>
-              
-              <!-- Curl request -->
-              <div class="response-sub-hdr mono">Curl Command</div>
-              <pre class="code-block"><code class="language-bash">curl -X 'GET' \
-  'https://api.bharath.dev/v1/skills/databases?replica_check=true' \
-  -H 'accept: application/json'</code></pre>
-              
-              <!-- Response body -->
-              <div class="response-sub-hdr mono">Response Body</div>
-              <pre class="code-block"><code class="language-json">{
-  "relational_engines": {
-    "postgresql": {
-      "acid_compliance": true,
-      "features": ["Schema Design", "Foreign Keys", "Optimized Querying"]
-    },
-    "mysql": {
-      "engine": "InnoDB",
-      "features": ["Indexing", "Aggregations", "Views"]
-    }
-  },
-  "document_engines": {
-    "mongodb_atlas": {
-      "model": "BSON Documents",
-      "orm": "Mongoose (Node.js)",
-      "deployment": "Cloud Managed Replica Sets"
-    },
-    "firebase": {
-      "features": ["Firestore Realtime", "Progress Persistence"]
-    }
-  }
-}</code></pre>
-            </div>
-          </div>
+      </div>
+      
+      <!-- Card 2: Developer Tooling & Workflow -->
+      <div class="support-card">
+        <div class="sc-head">
+          <span class="sc-icon">🛠️</span>
+          <h3 class="sc-title">Developer Tooling &amp; Workflow</h3>
         </div>
-
-        <!-- Endpoint 4: GET /security -->
-        <div class="op-block get" id="op-security">
-          <div class="op-header">
-            <span class="op-method mono">GET</span>
-            <span class="op-path mono">/skills/security</span>
-            <span class="op-summary">Retrieve cloud infrastructure models and security auditing tools</span>
-            <span class="op-toggle-icon">▼</span>
-          </div>
-          <div class="op-details">
-            <div class="op-section">
-              <div class="section-hdr">Parameters</div>
-              <div class="table-wrapper">
-                <table class="params-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Type</th>
-                      <th>Data Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="param-name mono">iam_details</td>
-                      <td>Show specific AWS IAM policy features (true/false)</td>
-                      <td>query</td>
-                      <td class="param-type mono">boolean</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            
-            <div class="op-section try-section">
-              <button class="btn-swagger try-btn">Try it out</button>
-              <button class="btn-swagger exec-btn hidden">Execute</button>
-              <button class="btn-swagger cancel-btn hidden">Cancel</button>
-            </div>
-            
-            <div class="op-section response-section hidden">
-              <div class="section-hdr">Responses</div>
-              <div class="response-headers mono">Code: 200 Success</div>
-              
-              <!-- Curl request -->
-              <div class="response-sub-hdr mono">Curl Command</div>
-              <pre class="code-block"><code class="language-bash">curl -X 'GET' \
-  'https://api.bharath.dev/v1/skills/security?iam_details=true' \
-  -H 'accept: application/json'</code></pre>
-              
-              <!-- Response body -->
-              <div class="response-sub-hdr mono">Response Body</div>
-              <pre class="code-block"><code class="language-json">{
-  "cloud_infrastructure": {
-    "aws": {
-      "services": ["EC2 Virtual Hosts", "S3 Storage Pools", "Lambda Serverless Functions"],
-      "security": "AWS Identity & Access Management (IAM) Rules"
-    }
-  },
-  "security_auditing_tooling": {
-    "wireshark": {
-      "use_case": "Packet Capture Analysis, Network Traffic Inspection"
-    },
-    "ids_siem": {
-      "use_case": "Intrusion Detection, Event Alert Ingestion & Analysis"
-    }
-  }
-}</code></pre>
-            </div>
-          </div>
+        <div class="sc-chips">
+          <span>Git / GitHub</span>
+          <span>Postman API Testing</span>
+          <span>VS Code &amp; IntelliJ</span>
+          <span>Google Gemini API</span>
+          <span>Wireshark</span>
         </div>
-
-        <!-- Endpoint 5: GET /foundations -->
-        <div class="op-block get" id="op-foundations">
-          <div class="op-header">
-            <span class="op-method mono">GET</span>
-            <span class="op-path mono">/skills/foundations</span>
-            <span class="op-summary">Retrieve academic computer science foundations</span>
-            <span class="op-toggle-icon">▼</span>
-          </div>
-          <div class="op-details">
-            <div class="op-section">
-              <div class="section-hdr">Parameters</div>
-              <div class="table-wrapper">
-                <span class="no-params mono">No parameters required</span>
-              </div>
-            </div>
-            
-            <div class="op-section try-section">
-              <button class="btn-swagger try-btn">Try it out</button>
-              <button class="btn-swagger exec-btn hidden">Execute</button>
-              <button class="btn-swagger cancel-btn hidden">Cancel</button>
-            </div>
-            
-            <div class="op-section response-section hidden">
-              <div class="section-hdr">Responses</div>
-              <div class="response-headers mono">Code: 200 Success</div>
-              
-              <!-- Curl request -->
-              <div class="response-sub-hdr mono">Curl Command</div>
-              <pre class="code-block"><code class="language-bash">curl -X 'GET' \
-  'https://api.bharath.dev/v1/skills/foundations' \
-  -H 'accept: application/json'</code></pre>
-              
-              <!-- Response body -->
-              <div class="response-sub-hdr mono">Response Body</div>
-              <pre class="code-block"><code class="language-json">{
-  "academic_foundations": {
-    "data_structures": ["Arrays", "Linked Lists", "Trees", "Graphs", "Hash Tables"],
-    "algorithms": ["Sorting", "Searching", "Graph Traversals", "Complexity Analysis"],
-    "operating_systems": ["Process Sync", "Memory Paging", "Threading Model"],
-    "dbms": ["Normalization", "Transaction Isolation Levels", "Locking Policies"],
-    "networks": ["OSI Stack Models", "TCP/IP Protocol Suite", "HTTP/HTTPS Lifecycle"]
-  }
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -638,6 +316,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=1.1"></script>
+<script src="script.js"></script>
 </body>
 </html>
