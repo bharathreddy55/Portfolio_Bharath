@@ -387,3 +387,19 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* ---------- pointer trail canvas ---------- */
+  #pointer-trail-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  @media (pointer: coarse) {
+    #pointer-trail-canvas {
+      display: none;
+    }
+  }
+
