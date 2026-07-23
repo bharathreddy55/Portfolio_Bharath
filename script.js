@@ -117,6 +117,9 @@ skillBars.forEach(bar => skillObserver.observe(bar));
   const canvas = document.getElementById('pointer-trail-canvas');
   if (!canvas || window.matchMedia('(pointer: coarse)').matches) return;
 
+  // Add the custom cursor class to enable cursor: none in CSS
+  document.documentElement.classList.add('has-custom-cursor');
+
   const ctx = canvas.getContext('2d');
   let width = canvas.width = window.innerWidth;
   let height = canvas.height = window.innerHeight;
@@ -127,123 +130,119 @@ skillBars.forEach(bar => skillObserver.observe(bar));
   });
 
   const plane = {
-    x: width / 2,
+    x: width / 2,     // Nose coordinates
     y: height / 2,
-    vx: 0,
-    vy: 0,
+    tailX: width / 2, // Tail coordinates for rotation and trailing calculations
+    tailY: height / 2,
     angle: 0,
     targetX: width / 2,
     targetY: height / 2,
     opacity: 0,
-    targetOpacity: 0
+    targetOpacity: 0,
+    scale: 1,
+    targetScale: 1
   };
 
   const particles = [];
   let hasMoved = false;
-  let idleTime = 0;
+  let isHoveringClickable = false;
 
+  // Listen globally to mouse movements
   window.addEventListener('mousemove', (e) => {
     plane.targetX = e.clientX;
     plane.targetY = e.clientY;
+    
     if (!hasMoved) {
       plane.x = e.clientX;
       plane.y = e.clientY;
+      plane.tailX = e.clientX;
+      plane.tailY = e.clientY;
       hasMoved = true;
     }
+    
     plane.targetOpacity = 1;
-    idleTime = 0;
   });
 
   window.addEventListener('mouseleave', () => {
     plane.targetOpacity = 0;
   });
 
-  function spawnParticle(x, y, angle) {
-    // Spawn at the back center of the plane
-    const tailX = x - Math.cos(angle) * 12;
-    const tailY = y - Math.sin(angle) * 12;
+  // Track hover states for interactive elements to scale the plane cursor
+  document.addEventListener('mouseover', (e) => {
+    const target = e.target;
+    if (target && (
+      target.tagName === 'A' ||
+      target.tagName === 'BUTTON' ||
+      target.closest('a') ||
+      target.closest('button') ||
+      target.closest('.navlinks a') ||
+      target.closest('.proj-link') ||
+      target.closest('.btn') ||
+      target.classList.contains('btn') ||
+      target.classList.contains('terminal') ||
+      target.closest('.terminal')
+    )) {
+      isHoveringClickable = true;
+    } else {
+      isHoveringClickable = false;
+    }
+  });
 
-    const force = 0.4 + Math.random() * 1.0;
-    const pVx = -Math.cos(angle) * force + (Math.random() - 0.5) * 0.6;
-    const pVy = -Math.sin(angle) * force + (Math.random() - 0.5) * 0.6;
+  function spawnParticle(x, y, angle) {
+    // Spawn at the back center of the plane (which corresponds to x, y tail position)
+    const force = 0.3 + Math.random() * 0.8;
+    const pVx = -Math.cos(angle) * force + (Math.random() - 0.5) * 0.4;
+    const pVy = -Math.sin(angle) * force + (Math.random() - 0.5) * 0.4;
 
     particles.push({
-      x: tailX,
-      y: tailY,
+      x: x,
+      y: y,
       vx: pVx,
       vy: pVy,
-      size: 2 + Math.random() * 2,
-      colorType: Math.random() > 0.4 ? 'copper' : 'teal',
+      size: 1.5 + Math.random() * 1.5,
+      colorType: Math.random() > 0.45 ? 'copper' : 'teal',
       life: 1.0,
-      decay: 0.02 + Math.random() * 0.02
+      decay: 0.025 + Math.random() * 0.02
     });
   }
 
   function update() {
-    // Fade opacity
+    // Fade opacity and scaling transitions
     plane.opacity += (plane.targetOpacity - plane.opacity) * 0.08;
+    plane.targetScale = isHoveringClickable ? 1.35 : 1.0;
+    plane.scale += (plane.targetScale - plane.scale) * 0.15;
 
-    // Position updates
-    const dx = plane.targetX - plane.x;
-    const dy = plane.targetY - plane.y;
+    // Nose locks to target coordinates instantly
+    plane.x = plane.targetX;
+    plane.y = plane.targetY;
+
+    // Tail lags behind nose
+    const dx = plane.x - plane.tailX;
+    const dy = plane.y - plane.tailY;
     const dist = Math.sqrt(dx * dx + dy * dy);
 
-    if (dist > 6) {
-      idleTime = 0;
-      const ax = dx / dist;
-      const ay = dy / dist;
+    if (dist > 0.5) {
+      // Easing factor controls tail lag sensitivity
+      const ease = 0.22;
+      plane.tailX += dx * ease;
+      plane.tailY += dy * ease;
 
-      // Adjust acceleration based on distance for a organic steering feeling
-      const accel = dist < 120 ? 0.35 : 0.6;
-      plane.vx += ax * accel;
-      plane.vy += ay * accel;
-
-      // Damping
-      const friction = dist < 60 ? 0.84 : 0.91;
-      plane.vx *= friction;
-      plane.vy *= friction;
-
-      // Limit speed
-      const speed = Math.sqrt(plane.vx * plane.vx + plane.vy * plane.vy);
-      const maxSpeed = 10;
-      if (speed > maxSpeed) {
-        plane.vx = (plane.vx / speed) * maxSpeed;
-        plane.vy = (plane.vy / speed) * maxSpeed;
-      }
-
-      plane.x += plane.vx;
-      plane.y += plane.vy;
-
-      // Smooth heading steering angle rotation
-      const targetAngle = Math.atan2(plane.vy, plane.vx);
-      let diff = targetAngle - plane.angle;
-      while (diff < -Math.PI) diff += Math.PI * 2;
-      while (diff > Math.PI) diff -= Math.PI * 2;
-      plane.angle += diff * 0.14;
+      // Update angle pointing from tail to nose
+      plane.angle = Math.atan2(dy, dx);
 
       // Spawn trail particles based on movement
-      if (speed > 1.2 && Math.random() < 0.5) {
-        spawnParticle(plane.x, plane.y, plane.angle);
-      }
-    } else {
-      plane.vx *= 0.8;
-      plane.vy *= 0.8;
-      plane.x += plane.vx;
-      plane.y += plane.vy;
-      
-      idleTime++;
-      if (idleTime > 120) {
-        plane.targetOpacity = 0;
+      if (dist > 2 && Math.random() < 0.6) {
+        spawnParticle(plane.tailX, plane.tailY, plane.angle);
       }
     }
 
-    // Particle lifecycle
+    // Particle updates
     for (let i = particles.length - 1; i >= 0; i--) {
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
-      p.vx *= 0.96;
-      p.vy *= 0.96;
+      p.vx *= 0.95;
+      p.vy *= 0.95;
       p.life -= p.decay;
 
       if (p.life <= 0) {
@@ -263,9 +262,9 @@ skillBars.forEach(bar => skillObserver.observe(bar));
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size * p.life * 3, 0, Math.PI * 2);
       if (p.colorType === 'copper') {
-        ctx.fillStyle = `rgba(200, 129, 79, ${p.life * 0.15})`;
+        ctx.fillStyle = `rgba(200, 129, 79, ${p.life * 0.12})`;
       } else {
-        ctx.fillStyle = `rgba(95, 168, 160, ${p.life * 0.15})`;
+        ctx.fillStyle = `rgba(95, 168, 160, ${p.life * 0.12})`;
       }
       ctx.fill();
 
@@ -273,9 +272,9 @@ skillBars.forEach(bar => skillObserver.observe(bar));
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
       if (p.colorType === 'copper') {
-        ctx.fillStyle = `rgba(230, 180, 140, ${p.life * 0.95})`;
+        ctx.fillStyle = `rgba(230, 180, 140, ${p.life * 0.9})`;
       } else {
-        ctx.fillStyle = `rgba(180, 230, 225, ${p.life * 0.95})`;
+        ctx.fillStyle = `rgba(180, 230, 225, ${p.life * 0.9})`;
       }
       ctx.fill();
     }
@@ -283,21 +282,23 @@ skillBars.forEach(bar => skillObserver.observe(bar));
     // Draw paper airplane if visible
     if (plane.opacity > 0.01) {
       ctx.save();
+      // Translate to nose position
       ctx.translate(plane.x, plane.y);
       ctx.rotate(plane.angle);
+      ctx.scale(plane.scale, plane.scale);
       ctx.globalAlpha = plane.opacity;
 
-      // 1. Draw Offset Shadow
+      // 1. Draw Offset Shadow (aligned to shifted coordinates)
       ctx.save();
-      ctx.translate(4, 6);
-      ctx.fillStyle = 'rgba(11, 14, 17, 0.3)';
+      ctx.translate(2, 3);
+      ctx.fillStyle = 'rgba(11, 14, 17, 0.35)';
       ctx.beginPath();
-      ctx.moveTo(15, 0);
-      ctx.lineTo(-12, -8);
-      ctx.lineTo(-6, -2);
-      ctx.lineTo(-4, 0);
-      ctx.lineTo(-6, 2);
-      ctx.lineTo(-12, 8);
+      ctx.moveTo(0, 0);          // Nose at (0,0)
+      ctx.lineTo(-27, -8);       // Top Wing Tip
+      ctx.lineTo(-21, -2);       // Left Inner Fold
+      ctx.lineTo(-19, 0);        // Center Back Fold
+      ctx.lineTo(-21, 2);        // Right Inner Fold
+      ctx.lineTo(-27, 8);        // Bottom Wing Tip
       ctx.closePath();
       ctx.fill();
       ctx.restore();
@@ -306,28 +307,28 @@ skillBars.forEach(bar => skillObserver.observe(bar));
       // Top wing face (bright copper)
       ctx.fillStyle = 'rgba(200, 129, 79, 0.95)';
       ctx.beginPath();
-      ctx.moveTo(15, 0);
-      ctx.lineTo(-12, -8);
-      ctx.lineTo(-6, -2);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-27, -8);
+      ctx.lineTo(-21, -2);
       ctx.closePath();
       ctx.fill();
 
       // Bottom wing face (darker copper)
       ctx.fillStyle = 'rgba(138, 90, 55, 0.95)';
       ctx.beginPath();
-      ctx.moveTo(15, 0);
-      ctx.lineTo(-12, 8);
-      ctx.lineTo(-6, 2);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-27, 8);
+      ctx.lineTo(-21, 2);
       ctx.closePath();
       ctx.fill();
 
       // Center valley/keel (teal accent)
       ctx.fillStyle = 'rgba(95, 168, 160, 0.95)';
       ctx.beginPath();
-      ctx.moveTo(15, 0);
-      ctx.lineTo(-6, -2);
-      ctx.lineTo(-4, 0);
-      ctx.lineTo(-6, 2);
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-21, -2);
+      ctx.lineTo(-19, 0);
+      ctx.lineTo(-21, 2);
       ctx.closePath();
       ctx.fill();
 

@@ -403,3 +403,18 @@
     }
   }
 
+  /* ---------- custom cursor hiding ---------- */
+  @media (pointer: fine) {
+    .has-custom-cursor,
+    .has-custom-cursor a,
+    .has-custom-cursor button,
+    .has-custom-cursor input,
+    .has-custom-cursor select,
+    .has-custom-cursor textarea,
+    .has-custom-cursor [role="button"],
+    .has-custom-cursor .btn,
+    .has-custom-cursor .terminal {
+      cursor: none !important;
+    }
+  }
+
