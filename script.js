@@ -140,12 +140,15 @@ skillBars.forEach(bar => skillObserver.observe(bar));
     opacity: 0,
     targetOpacity: 0,
     scale: 1,
-    targetScale: 1
+    targetScale: 1,
+    morph: 0,
+    targetMorph: 0
   };
 
   const particles = [];
   let hasMoved = false;
   let isHoveringClickable = false;
+  let reticleAngle = 0;
 
   // Listen globally to mouse movements
   window.addEventListener('mousemove', (e) => {
@@ -200,18 +203,21 @@ skillBars.forEach(bar => skillObserver.observe(bar));
       vx: pVx,
       vy: pVy,
       size: 2.0 + Math.random() * 2.0,
-      colorType: Math.random() > 0.45 ? 'copper' : 'teal',
+      // Sparks change to pure cool teal when hovering / scanning
+      colorType: isHoveringClickable ? 'teal' : (Math.random() > 0.45 ? 'copper' : 'teal'),
       life: 1.0,
       decay: 0.01 + Math.random() * 0.012
     });
   }
 
   function update() {
-    // Fade opacity and scaling transitions
+    // Fade opacity, scaling, and morph transitions
     plane.opacity += (plane.targetOpacity - plane.opacity) * 0.08;
-    // Scale increased: base is 1.4, grows to 1.85 on hovering interactive elements
     plane.targetScale = isHoveringClickable ? 1.85 : 1.4;
     plane.scale += (plane.targetScale - plane.scale) * 0.15;
+    
+    plane.targetMorph = isHoveringClickable ? 1.0 : 0.0;
+    plane.morph += (plane.targetMorph - plane.morph) * 0.15;
 
     // Nose locks to target coordinates instantly
     plane.x = plane.targetX;
@@ -281,14 +287,14 @@ skillBars.forEach(bar => skillObserver.observe(bar));
       ctx.fill();
     }
 
-    // Draw paper airplane if visible
-    if (plane.opacity > 0.01) {
+    // Draw paper airplane if visible (fades out as morph approaches 1.0)
+    if (plane.opacity > 0.01 && plane.morph < 0.99) {
       ctx.save();
       // Translate to nose position
       ctx.translate(plane.x, plane.y);
       ctx.rotate(plane.angle);
       ctx.scale(plane.scale, plane.scale);
-      ctx.globalAlpha = plane.opacity;
+      ctx.globalAlpha = plane.opacity * (1 - plane.morph);
 
       // 1. Draw Offset Shadow (aligned to shifted coordinates)
       ctx.save();
@@ -332,6 +338,68 @@ skillBars.forEach(bar => skillObserver.observe(bar));
       ctx.lineTo(-19, 0);
       ctx.lineTo(-21, 2);
       ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    // Draw high-tech target reticle scanner if hovering clickable elements (fades in as morph approaches 1.0)
+    if (plane.opacity > 0.01 && plane.morph > 0.01) {
+      ctx.save();
+      ctx.translate(plane.x, plane.y);
+      
+      // Update rotation angle for spinning effect
+      reticleAngle += 0.04;
+      ctx.rotate(reticleAngle);
+      ctx.globalAlpha = plane.opacity * plane.morph;
+
+      // Breathing pulse animation for the reticle radius
+      const pulse = Math.sin(Date.now() * 0.008) * 1.2;
+      const r = 12 + pulse; 
+
+      // 1. Draw Reticle Shadow
+      ctx.save();
+      ctx.translate(1.5, 2);
+      ctx.strokeStyle = 'rgba(11, 14, 17, 0.35)';
+      ctx.lineWidth = 1.5;
+      
+      // Circle shadow
+      ctx.beginPath();
+      ctx.arc(0, 0, r, 0, Math.PI * 2);
+      ctx.stroke();
+      
+      // Ticks shadow
+      ctx.beginPath();
+      for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 2) {
+        ctx.moveTo(Math.cos(angle) * (r - 3), Math.sin(angle) * (r - 3));
+        ctx.lineTo(Math.cos(angle) * (r + 4), Math.sin(angle) * (r + 4));
+      }
+      ctx.stroke();
+      ctx.restore();
+
+      // 2. Draw Scanner Ring & Ticks (Teal)
+      ctx.strokeStyle = 'rgba(95, 168, 160, 0.95)'; // --teal
+      ctx.lineWidth = 1.5;
+
+      // Outer dashed/segmented ring
+      ctx.beginPath();
+      ctx.arc(0, 0, r, 0, Math.PI * 2);
+      ctx.setLineDash([3, 3]);
+      ctx.stroke();
+      ctx.setLineDash([]); // Reset dash
+
+      // Crosshair ticks
+      ctx.beginPath();
+      for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 2) {
+        ctx.moveTo(Math.cos(angle) * (r - 3), Math.sin(angle) * (r - 3));
+        ctx.lineTo(Math.cos(angle) * (r + 4), Math.sin(angle) * (r + 4));
+      }
+      ctx.stroke();
+
+      // Center laser dot (Copper)
+      ctx.fillStyle = 'rgba(200, 129, 79, 0.95)'; // --copper
+      ctx.beginPath();
+      ctx.arc(0, 0, 2.5, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.restore();
