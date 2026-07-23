@@ -190,26 +190,27 @@ skillBars.forEach(bar => skillObserver.observe(bar));
 
   function spawnParticle(x, y, angle) {
     // Spawn at the back center of the plane (which corresponds to x, y tail position)
-    const force = 0.3 + Math.random() * 0.8;
-    const pVx = -Math.cos(angle) * force + (Math.random() - 0.5) * 0.4;
-    const pVy = -Math.sin(angle) * force + (Math.random() - 0.5) * 0.4;
+    const force = 0.6 + Math.random() * 1.4;
+    const pVx = -Math.cos(angle) * force + (Math.random() - 0.5) * 0.5;
+    const pVy = -Math.sin(angle) * force + (Math.random() - 0.5) * 0.5;
 
     particles.push({
       x: x,
       y: y,
       vx: pVx,
       vy: pVy,
-      size: 1.5 + Math.random() * 1.5,
+      size: 2.0 + Math.random() * 2.0,
       colorType: Math.random() > 0.45 ? 'copper' : 'teal',
       life: 1.0,
-      decay: 0.025 + Math.random() * 0.02
+      decay: 0.01 + Math.random() * 0.012
     });
   }
 
   function update() {
     // Fade opacity and scaling transitions
     plane.opacity += (plane.targetOpacity - plane.opacity) * 0.08;
-    plane.targetScale = isHoveringClickable ? 1.35 : 1.0;
+    // Scale increased: base is 1.4, grows to 1.85 on hovering interactive elements
+    plane.targetScale = isHoveringClickable ? 1.85 : 1.4;
     plane.scale += (plane.targetScale - plane.scale) * 0.15;
 
     // Nose locks to target coordinates instantly
@@ -230,9 +231,10 @@ skillBars.forEach(bar => skillObserver.observe(bar));
       // Update angle pointing from tail to nose
       plane.angle = Math.atan2(dy, dx);
 
-      // Spawn trail particles based on movement
-      if (dist > 2 && Math.random() < 0.6) {
-        spawnParticle(plane.tailX, plane.tailY, plane.angle);
+      // Spawn trail particles based on movement (generates a thicker, longer trail)
+      if (dist > 2) {
+        if (Math.random() < 0.75) spawnParticle(plane.tailX, plane.tailY, plane.angle);
+        if (dist > 8 && Math.random() < 0.45) spawnParticle(plane.tailX, plane.tailY, plane.angle);
       }
     }
 
@@ -241,8 +243,8 @@ skillBars.forEach(bar => skillObserver.observe(bar));
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
-      p.vx *= 0.95;
-      p.vy *= 0.95;
+      p.vx *= 0.972; // friction reduced so they drift further
+      p.vy *= 0.972;
       p.life -= p.decay;
 
       if (p.life <= 0) {
