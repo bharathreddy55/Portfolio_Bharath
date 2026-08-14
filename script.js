@@ -5,7 +5,7 @@ const lines = [
   {t:'prompt', text:'$ cat focus.txt'},
   {t:'out', text:'java backend · databases · api development'},
   {t:'prompt', text:'$ status --check'},
-  {t:'out', text:'[ok] 5 projects shipped  [ok] 4 certs/programs completed  [ok] open to roles'},
+  {t:'out', text:'[ok] 6 projects shipped  [ok] 4 certs/programs completed  [ok] open to roles'},
 ];
 
 const termBody = document.getElementById('termBody');
