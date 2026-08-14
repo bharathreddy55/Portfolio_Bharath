@@ -38,7 +38,7 @@
     </div>
 
     <h1 class="hero-title">Computer Science graduate building<br><span class="accent">full stack Java applications.</span></h1>
-    <p class="hero-sub">Computer Science graduate from VIT Vellore (Graduated June 2026) specializing in backend-focused software development. I design clean data layers, build robust Java services, and construct scalable web systems—applying an information security foundation to build reliable, resilient code.</p>
+    <p class="hero-sub">Computer Science (Information Security) graduate from VIT Vellore (Graduated June 2026). I build secure, high-concurrency backend services with Spring Boot and Java—integrating cryptography, threat modeling, and defensive coding to ensure systems are resilient under load and secure by design.</p>
 
     <div class="hero-cta">
       <a href="#projects" class="btn primary">View projects →</a>
@@ -70,9 +70,9 @@
         </div>
       </div>
       <div class="about-body reveal">
-        <p class="lead">I'm a Computer Science graduate from Vellore Institute of Technology (Graduated June 2026), specializing in Information Security and building scalable full stack Java applications.</p>
-        <p>My foundation is in core CS — data structures, OOP, databases, operating systems — and I'm building toward Java-based backend systems: clean data models, structured APIs, and the database layer underneath them.</p>
-        <p>A background in security and cloud (AWS, IAM, network tooling) means I default to thinking about how a system fails before I ship it — not just how it works on the happy path.</p>
+        <p class="lead">I'm a Computer Science graduate from Vellore Institute of Technology (VIT Vellore, June 2026), combining robust Java backend development with a specialized foundation in Information Security.</p>
+        <p>I specialize in building secure, high-concurrency distributed applications using Spring Boot, Spring Cloud, Kafka, and Redis. My security background drives me to write defensive code, manage authorization flows via secure JWT/OAuth2 configurations, and enforce strict access controls at both the application and cloud layers.</p>
+        <p>Rather than just designing for the happy path, I proactively model threat vectors, prevent OWASP Top 10 vulnerabilities, and trace network execution paths to ensure zero data leakage.</p>
         <div class="focus-tags">
           <span>Java</span>
           <span>OOP &amp; Data Structures</span>
@@ -167,12 +167,12 @@
         </div>
         <div class="sm-bar"><div class="sm-fill" data-pct="82"></div></div>
         <div class="sm-chips">
-          <span class="sm-chip main">AWS Rekognition</span>
-          <span class="sm-chip">AWS EC2 / S3</span>
-          <span class="sm-chip">AWS Lambda</span>
-          <span class="sm-chip">IAM Security</span>
-          <span class="sm-chip">Wireshark</span>
-          <span class="sm-chip">SIEM / IDS</span>
+          <span class="sm-chip main">OWASP Top 10 Mitigation</span>
+          <span class="sm-chip main">AWS IAM &amp; Cloud Security</span>
+          <span class="sm-chip">JWT / OAuth2 Authorization</span>
+          <span class="sm-chip">AWS EC2 / S3 / Lambda</span>
+          <span class="sm-chip">Network Auditing (Wireshark)</span>
+          <span class="sm-chip">SIEM / Cryptography</span>
         </div>
       </div>
 
@@ -242,7 +242,57 @@
             <li>Integrated JPA optimistic locking (@Version) and idempotent payment handling via unique Idempotency-Keys to completely eliminate double-booking and double-charging.</li>
             <li>Constructed an interactive React client frontend with Lucide icons, featuring real-time checkout countdowns and a concurrency simulator for stress-testing.</li>
           </ul>
-          <a href="https://github.com/bharathreddy55/SeatSync" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+          <div class="proj-links">
+            <a href="https://github.com/bharathreddy55/SeatSync" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+            <a href="https://seat-sync-ecru.vercel.app" class="proj-link demo" target="_blank" rel="noopener">⚡ Live Demo</a>
+            <button class="proj-link arch-toggle" id="seatsync-toggle-btn" onclick="toggleSeatSyncArch()">📊 System Design</button>
+          </div>
+          
+          <div class="arch-wrapper" id="seatsync-arch">
+            <div class="arch-grid">
+              <div class="arch-node" onclick="showArchInfo('client', this)">
+                <div class="node-type">Frontend</div>
+                <div class="node-name">React Client</div>
+              </div>
+              <div class="arch-node" onclick="showArchInfo('gateway', this)">
+                <div class="node-type">Routing</div>
+                <div class="node-name">API Gateway</div>
+              </div>
+              <div class="arch-node" onclick="showArchInfo('eureka', this)">
+                <div class="node-type">Discovery</div>
+                <div class="node-name">Eureka Registry</div>
+              </div>
+              <div class="arch-node" onclick="showArchInfo('services', this)">
+                <div class="node-type">Core Logic</div>
+                <div class="node-name">Microservices</div>
+              </div>
+              <div class="arch-node" onclick="showArchInfo('redis', this)">
+                <div class="node-type">Locks Cache</div>
+                <div class="node-name">Redis TTL Hold</div>
+              </div>
+              <div class="arch-node" onclick="showArchInfo('db', this)">
+                <div class="node-type">Database</div>
+                <div class="node-name">Postgres JPA</div>
+              </div>
+              <div class="arch-node" onclick="showArchInfo('kafka', this)">
+                <div class="node-type">Event Bus</div>
+                <div class="node-name">Apache Kafka</div>
+              </div>
+              <div class="arch-node" onclick="showArchInfo('notification', this)">
+                <div class="node-type">Decoupled</div>
+                <div class="node-name">Notification Dispatch</div>
+              </div>
+              <div class="arch-node" onclick="showArchInfo('idempotency', this)">
+                <div class="node-type">Safety</div>
+                <div class="node-name">Idempotency Keys</div>
+              </div>
+            </div>
+            
+            <div class="arch-explanation" id="seatsync-explanation">
+              <h4 id="arch-explain-title">// System Design Auditing</h4>
+              <p id="arch-explain-text">Click any node in the grid above to audit its engineering role in managing high-concurrency seat locking, double-booking prevention, and asynchronous decoupled workflows.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -261,7 +311,10 @@
             <li>Leveraged the Google Gemini API to automatically generate semantic tags and episode summaries, incorporating robust fallback handlers.</li>
             <li>Designed real-time playback synchronization across concurrent client sessions using Socket.io to support collaborative rooms.</li>
           </ul>
-          <a href="https://github.com/bharathreddy55/AetherCast-MERN" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+          <div class="proj-links">
+            <a href="https://github.com/bharathreddy55/AetherCast-MERN" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+            <a href="https://podcast-frontend-roan.vercel.app" class="proj-link demo" target="_blank" rel="noopener">⚡ Live Demo</a>
+          </div>
         </div>
       </div>
 
@@ -279,7 +332,10 @@
             <li>Integrated Gemini API to generate diagnostic study feedback and provide instant, step-by-step solution breakdowns for mock questions.</li>
             <li>Configured a Firebase backend to manage user authentication, session state persistence, and performance metrics.</li>
           </ul>
-          <a href="https://github.com/bharathreddy55/GateLabs" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+          <div class="proj-links">
+            <a href="https://github.com/bharathreddy55/GateLabs" class="proj-link" target="_blank" rel="noopener">→ View repository</a>
+            <a href="https://gatelabs-taupe.vercel.app" class="proj-link demo" target="_blank" rel="noopener">⚡ Live Demo</a>
+          </div>
         </div>
       </div>
 
@@ -349,25 +405,37 @@
         <div class="org">Oracle University</div>
         <div class="name">OCI 2025 Certified Generative AI Professional</div>
         <div class="meta">Exam 1Z0-1127-25 · Issued Jul 22, 2025 · Valid to Jul 22, 2027</div>
-        <div class="score">✓ Scored 96% (pass mark 68%)</div>
+        <div class="cert-meta-row">
+          <div class="score">✓ Scored 96% (pass mark 68%)</div>
+          <a href="https://mylearn.oracle.com/ou/learning-path/oracle-cloud-infrastructure-2025-certified-generative-ai-professional/141094" class="cert-link" target="_blank" rel="noopener">→ Verify Credential</a>
+        </div>
       </div>
       <div class="cert reveal">
         <div class="org">Google / Coursera</div>
         <div class="name">Google Cybersecurity Professional Certificate</div>
         <div class="meta">9 courses · SIEM, IDS, Python, Linux, SQL · Issued Jul 18, 2025</div>
-        <div class="score">✓ Academic credentials verified</div>
+        <div class="cert-meta-row">
+          <div class="score">✓ Academic credentials verified</div>
+          <a href="https://www.coursera.org/professional-certificates/google-cybersecurity" class="cert-link" target="_blank" rel="noopener">→ Verify Credential</a>
+        </div>
       </div>
       <div class="cert reveal">
         <div class="org">TATA / Forage</div>
         <div class="name">Cybersecurity Analyst Job Simulation</div>
         <div class="meta">IAM fundamentals, strategy &amp; platform integration · Completed Aug 14, 2025</div>
-        <div class="score">✓ Completed virtual simulation program</div>
+        <div class="cert-meta-row">
+          <div class="score">✓ Completed virtual simulation program</div>
+          <a href="https://www.theforage.com/simulations/tata-group/cybersecurity-analyst-y94w" class="cert-link" target="_blank" rel="noopener">→ Verify Credential</a>
+        </div>
       </div>
       <div class="cert reveal">
         <div class="org">Pantech Prolabs</div>
         <div class="name">Full Stack Web Development Internship</div>
         <div class="meta">Certificate of Internship · Issued Dec 22, 2024</div>
-        <div class="score">✓ Completed internship training curriculum (No. CERT_MY7HRD18)</div>
+        <div class="cert-meta-row">
+          <div class="score">✓ Completed internship training curriculum (No. CERT_MY7HRD18)</div>
+          <a href="https://www.pantechsolutions.net/" class="cert-link" target="_blank" rel="noopener">→ Verify Credential</a>
+        </div>
       </div>
     </div>
   </div>

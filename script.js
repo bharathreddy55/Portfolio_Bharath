@@ -414,3 +414,71 @@ skillBars.forEach(bar => skillObserver.observe(bar));
 
   loop();
 })();
+
+// ---------- SeatSync Interactive Visualizer Logic ----------
+function toggleSeatSyncArch() {
+  const arch = document.getElementById('seatsync-arch');
+  const btn = document.getElementById('seatsync-toggle-btn');
+  if (arch.style.display === 'none' || arch.style.display === '') {
+    arch.style.display = 'flex';
+    btn.textContent = '📊 Hide System Design';
+  } else {
+    arch.style.display = 'none';
+    btn.textContent = '📊 System Design';
+  }
+}
+
+const nodeInfo = {
+  client: {
+    title: "// Frontend: React (Vite, TypeScript, Tailwind)",
+    text: "Provides a responsive grid showing real-time seat states (Available, Held, Booked). Initiates double-click simulated race conditions to stress-test backend idempotency."
+  },
+  gateway: {
+    title: "// Entrypoint: Spring Cloud Gateway",
+    text: "Operates as a stateless reverse proxy on port 8080, handling JWT parsing and CORS validation before routing requests to Eureka-discovered microservices."
+  },
+  eureka: {
+    title: "// Service Discovery: Netflix Eureka Registry",
+    text: "Dynamic microservice register allowing load-balanced service-to-service communication. Decouples service hostnames from port routing paths."
+  },
+  services: {
+    title: "// Core Engines: Booking & Event Microservices",
+    text: "The event service manages seat maps and event metadata. The booking service orchestrates distributed transactions, locks, and payments."
+  },
+  redis: {
+    title: "// Locks Cache: Redis Distributed Holds",
+    text: "Uses Redis 'SETNX' commands to reserve a selected seat for 5 minutes (TTL). Automatically releases the hold back to 'Available' on expiration."
+  },
+  db: {
+    title: "// Relational Data: PostgreSQL (JPA & Optimistic Locking)",
+    text: "Utilizes @Version annotations to throw ObjectOptimisticLockingFailureException on simultaneous writes to the same seat record, neutralizing race conditions."
+  },
+  kafka: {
+    title: "// Event Bus: Apache Kafka Broker",
+    text: "Dispatches events asynchronously when booking transactions succeed. Allows Event and Booking services to trigger user notifications without blocking."
+  },
+  notification: {
+    title: "// Workers: Notification Microservice",
+    text: "Listens to Kafka topics and dispatches real-time transactional Email and SMS notifications to the user without slowing down main checkout operations."
+  },
+  idempotency: {
+    title: "// Safety Net: Payment Idempotency Keys",
+    text: "Enforces unique 'Idempotency-Key' HTTP headers. If an API request retries due to a network glitch, it returns the cached result without double-charging the user's card."
+  }
+};
+
+function showArchInfo(nodeKey, element) {
+  // Remove active class from all nodes
+  const nodes = document.querySelectorAll('.arch-node');
+  nodes.forEach(n => n.classList.remove('active'));
+  
+  // Add active class to clicked node
+  element.classList.add('active');
+  
+  // Update explanations text
+  const info = nodeInfo[nodeKey];
+  if (info) {
+    document.getElementById('arch-explain-title').textContent = info.title;
+    document.getElementById('arch-explain-text').textContent = info.text;
+  }
+}
