@@ -262,6 +262,10 @@
     color: #8ed6cd;
     border-color: var(--teal);
   }
+  .cert-links {
+    display: flex;
+    gap: 12px;
+  }
 
   /* ---------- certs ---------- */
   .cert-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; border:1px solid var(--line); background:var(--line); border-radius:var(--radius); overflow:hidden;}
