@@ -1,6 +1,6 @@
 # Portfolio — Bharath Kumar Reddy Allampati
 
-A personal portfolio site for a Computer Science Graduate (VIT, Class of 2026) building toward full stack development with Java, backed by a foundation in information security and cloud (AWS).
+A personal portfolio site for a Computer Science Graduate (VIT Vellore, Class of 2026) building toward full stack development with Java, backed by a foundation in information security and cloud (AWS).
 
 ## What's on it
 
